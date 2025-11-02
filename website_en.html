@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Ultrasound Tomography  Imaging Conference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --brand-primary:#0055a4;
+            --brand-dark:#003366;
+            --brand-accent:#ffc107;
+            --brand-bg:#f5f7fa;
+            --text-color:#2f3640;
+            --radius-sm:6px;
+            --radius-md:10px;
+            --radius-lg:16px;
+            --shadow-sm:0 2px 4px rgba(0,0,0,.08);
+            --shadow-md:0 6px 18px rgba(0,0,0,.12);
+            --shadow-lg:0 12px 40px -4px rgba(0,0,0,.18);
+            --gradient-brand:linear-gradient(135deg,#003366 0%,#0055a4 50%,#0077cc 100%);
+        }
+        html {scroll-behavior:smooth;}
+        body {
+            font-family:'Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+            line-height:1.7;
+            color:var(--text-color);
+            background:radial-gradient(circle at 20% 20%,#ffffff 0%,#eef3f8 70%,#e4ebf3 100%);
+            -webkit-font-smoothing:antialiased;
+        }
+        
+        .header-container {
+            background: var(--gradient-brand);
+            color:#fff;
+            padding:3.2rem 0 3rem;
+            position:relative;
+            overflow:hidden;
+        }
+        .header-container:after {
+            content:"";
+            position:absolute;inset:0;
+            background:radial-gradient(circle at 80% 10%,rgba(255,255,255,.25),transparent 60%);
+            pointer-events:none;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .header-content h1 {font-size:clamp(2.4rem,4.2vw,3.4rem);margin-bottom:.65rem;letter-spacing:.5px;font-weight:700;}
+        
+        .header-content p {font-size:clamp(1rem,1.1vw,1.3rem);opacity:.92;letter-spacing:.5px;}
+        
+        nav {background:#18232fdd;backdrop-filter:blur(8px);position:sticky;top:0;z-index:1200;box-shadow:0 4px 14px -2px rgba(0,0,0,.25);}        
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .nav-language {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a {display:block;color:#f0f4f8;text-decoration:none;padding:.95rem 1.35rem;font-size:.95rem;font-weight:500;letter-spacing:.5px;position:relative;transition:.35s cubic-bezier(.4,0,.2,1);}        
+        nav a:after {content:"";position:absolute;left:50%;bottom:6px;width:0;height:3px;background:linear-gradient(90deg,var(--brand-accent),#ffe38a);border-radius:2px;transition:.35s;transform:translateX(-50%);}        
+        nav a:hover {color:#fff;}        
+        nav a.active {color:#fff;}        
+        nav a.active:after,nav a:hover:after {width:60%;}
+        
+        .container {max-width:1320px;margin:2.2rem auto;padding:0 28px;}
+        
+        .main-content {background:#ffffff;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:3.2rem 3rem;margin-bottom:2.8rem;position:relative;overflow:hidden;}
+        .main-content:before {content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(0,85,164,.05),rgba(255,193,7,.04));pointer-events:none;}
+        
+        .section {margin-bottom:4rem;scroll-margin-top:110px;}
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        h2 {color:var(--brand-dark);font-size:clamp(2.1rem,2.6vw,3rem);margin-bottom:1.7rem;padding-bottom:.9rem;border-bottom:2px solid var(--brand-primary);position:relative;line-height:1.15;font-weight:700;letter-spacing:.5px;}
+        
+        h2:after {content:'';position:absolute;bottom:-2px;left:0;width:110px;height:4px;background:linear-gradient(90deg,var(--brand-accent),#ffe38a);border-radius:2px;}
+        
+        h3 {color:var(--brand-primary);margin:1.25rem 0 .85rem;font-weight:600;letter-spacing:.4px;}
+        
+        p {margin-bottom:1.05rem;line-height:1.78;font-size:1.02rem;}
+        
+        .important-dates {
+            background-color: #e9f4ff;
+            border-left: 4px solid #0055a4;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        
+        .date-item {
+            display: flex;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 0;
+        }
+        
+        .date-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .date-label {
+            font-weight: bold;
+            min-width: 120px;
+            color: #003366;
+        }
+        
+        .forum {background:#f4f8fb;border:1px solid #e2edf5;border-left:5px solid var(--brand-primary);padding:1.35rem 1.5rem;margin-bottom:1.6rem;border-radius:0 var(--radius-md) var(--radius-md) 0;transition:.35s;}        
+        
+        .forum:hover {transform:translateY(-4px);box-shadow:0 10px 26px -4px rgba(0,0,0,.18);background:#ffffff;}
+        
+        .speaker-grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:2.2rem;margin-top:2.4rem;align-items:stretch;}
+
+        @media (max-width: 900px) {
+            .speaker-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        .speaker {background:linear-gradient(160deg,#ffffff 0%,#f4f7fa 100%);border-radius:18px;overflow:hidden;box-shadow:0 10px 34px -8px rgba(0,40,75,.25);transition:.55s cubic-bezier(.19,1,.22,1);border:1px solid #e5eef4;position:relative;display:flex;flex-direction:column;isolation:isolate;}
+        
+        .speaker:hover {transform:translateY(-10px) scale(1.015);box-shadow:0 30px 56px -14px rgba(0,40,75,.35);}        
+        
+        .speaker::before {content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--brand-primary) 0%,#007ed9 40%,var(--brand-accent) 100%);}        
+        
+        .speaker-img-placeholder,.speaker-img-container {aspect-ratio:4/3;width:100%;max-height:330px;background:linear-gradient(135deg,#dbe7f0 0%,#b9cfe0 100%);display:flex;align-items:center;justify-content:center;color:#495057;font-weight:600;overflow:hidden;position:relative;}
+        
+        .speaker-img-container::after {content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.35),rgba(0,0,0,.05));mix-blend-mode:multiply;opacity:.4;transition:.5s;}
+        .speaker:hover .speaker-img-container:after {opacity:.55;}
+        
+        .speaker-img {display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s cubic-bezier(.19,1,.22,1);filter:saturate(105%);}        
+        
+        .speaker:hover .speaker-img {transform:scale(1.08);}        
+        
+        .speaker-info {padding:1.55rem 1.4rem 1.9rem;position:relative;display:flex;flex-direction:column;gap:.75rem;flex-grow:1;}
+        
+        .speaker-info h3 {margin:0 0 .55rem;color:var(--brand-dark);font-size:1.35rem;font-weight:700;letter-spacing:.4px;position:relative;}
+        
+        .speaker-info h3::after {content:'';position:absolute;bottom:-6px;left:0;width:60px;height:4px;background:linear-gradient(90deg,var(--brand-primary),var(--brand-accent));border-radius:2px;opacity:.9;}
+        
+        .speaker-info p {margin-bottom:.85rem;line-height:1.65;color:#4a5662;font-size:.92rem;}
+        
+        .speaker-info p:nth-of-type(1) {font-style:italic;color:#65707c;margin-bottom:1.05rem;}
+        
+        .speaker-info p:nth-of-type(2) {font-weight:600;color:var(--brand-primary);background:#e9f4ff;padding:.55rem .85rem;border-radius:8px;border-left:5px solid var(--brand-primary);margin-bottom:.95rem;box-shadow:inset 0 0 0 1px #d1e6f5;}
+        
+        .speaker-info p:nth-of-type(3) {background:#f7f9fb;padding:1rem .95rem;border-radius:10px;border:1px solid #dfe7ed;font-size:.9rem;line-height:1.55;}
+        .speaker-info .toggle-btn {align-self:flex-start;background:var(--brand-primary);color:#fff;border:none;border-radius:24px;font-size:.75rem;letter-spacing:.5px;padding:.45rem .95rem;margin-top:.25rem;cursor:pointer;font-weight:600;display:inline-flex;gap:.35rem;align-items:center;box-shadow:0 4px 12px -2px rgba(0,85,164,.4);transition:.35s;}
+        .speaker-info .toggle-btn:hover {background:#003f7d;}
+        .speaker-info .collapsed {max-height:6.5rem;overflow:hidden;position:relative;}
+        .speaker-info .collapsed:after {content:"";position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(to top,#f7f9fb 10%,rgba(247,249,251,0));}
+        
+        .contact-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:1.5rem;}
+        
+        .contact-card {background:#ffffff;border-radius:14px;padding:1.4rem 1.35rem;box-shadow:0 6px 18px -6px rgba(0,0,0,.15);border:1px solid #e3ecf2;position:relative;overflow:hidden;}
+        .contact-card:before {content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--brand-primary),var(--brand-accent));}
+        
+        .contact-card h3 {
+            color: #003366;
+            margin-top: 0;
+        }
+        
+        footer {background:#0f1822;color:#d9e2ea;text-align:center;padding:2.4rem 0;margin-top:3rem;position:relative;overflow:hidden;}
+        footer:before {content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.12),transparent 65%);opacity:.5;}
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        @media (max-width: 1040px){
+            .main-content {padding:2.4rem 2.1rem;}
+            h2 {font-size:clamp(1.9rem,3.4vw,2.4rem);}        
+        }
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .header-content p {
+                font-size: 1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            nav a {
+                padding: 0.8rem 1rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .speaker-grid, .contact-grid {grid-template-columns:1fr;}
+            nav a {padding:.85rem 1rem;}
+            .speaker-info p {font-size:.95rem;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <h1>First Ultrasound Tomography Imaging Conference</h1>
+                <p>October 24-26, 2025 · Zhejiang Normal University, China</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#topics">Topics</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#speakers">Speakers</a>
+                <a href="#accommodation">Accommodation</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-language">
+                <a href="website.html">中文</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="main-content">
+            <section id="home" class="section">
+                <h2>Welcome to the First Ultrasound Tomography Imaging Conference</h2>
+                <p>The "First Ultrasound Tomography Imaging Conference" co-hosted by the College of Mathematics, Physics and Medicine at Zhejiang Normal University, the College of Life Science and Technology at Huazhong University of Science and Technology, the Hubei Province High-end Biomedical Imaging Major Scientific Infrastructure, and the Hubei Province Biomedical Engineering Society will be held at Zhejiang Normal University from October 24 to 26, 2025.</p>
+                <p>This symposium aims to promote academic exchanges in fields related to ultrasound tomography imaging and inverse problem solving mathematical theories and methods, and to discuss the latest research progress and clinical applications in this field.</p>
+            </section>
+
+            <section id="about" class="section">
+                <h2>About the Conference</h2>
+                <p>Ultrasound Tomography Imaging is an emerging medical imaging technology that reconstructs the acoustic parameter distribution of tissues by measuring the propagation characteristics of ultrasound waves in tissues. Compared to traditional ultrasound imaging, ultrasound tomography imaging can provide more quantitative and accurate diagnostic information.</p>
+                <p>This technology is based on the differences in propagation speed, attenuation, and scattering characteristics of ultrasound waves in different media. By transmitting and receiving ultrasound signals from multiple angles, advanced mathematical algorithms are used to reconstruct the two-dimensional or three-dimensional distribution images of parameters such as sound speed, density, and attenuation coefficient of the tissues. This quantitative imaging method overcomes the shortcomings of traditional ultrasound imaging, such as strong subjectivity and difficulty in standardization.</p>
+                <p>Ultrasound tomography imaging shows great potential in clinical applications such as breast cancer screening, liver fibrosis assessment, and bone density measurement. Especially in the early diagnosis of breast cancer, this technology can provide high-contrast images similar to MRI while avoiding radiation exposure and high costs, with important clinical value and development prospects.</p>
+                <p>This conference will bring together experts and scholars in the field of ultrasound tomography imaging from home and abroad to discuss the latest research progress, mathematical theories and methods, computational imaging algorithms, and clinical application prospects of this technology.</p>
+                
+                <div class="important-dates">
+                    <h3>Important Information</h3>
+                    <div class="date-item">
+                        <span class="date-label">Conference Dates:</span>
+                        <span>October 24-26, 2025</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">Venue:</span>
+                        <span>Zhejiang Normal University (688 Yingbin Road, Jinhua City, Zhejiang Province, China, Postcode 321004)</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">Organizers:</span>
+                        <span>College of Mathematics, Physics and Medicine at Zhejiang Normal University, College of Life Science and Technology at Huazhong University of Science and Technology, Hubei Province High-end Biomedical Imaging Major Scientific Infrastructure, Hubei Province Biomedical Engineering Society</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">Undertakers:</span>
+                        <span>College of Mathematics, Physics and Medicine at Zhejiang Normal University</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="topics" class="section">
+                <h2>Conference Topics</h2>
+                <p>The conference will focus on in-depth discussions around the following topics:</p>
+                
+                <div class="forum">
+                    <h3>Ultrasound Tomography Imaging Technology</h3>
+                    <p>Including but not limited to: ultrasound tomography imaging system design, signal acquisition and processing, image reconstruction algorithms, multimodal imaging fusion, etc.</p>
+                </div>
+                
+                <div class="forum">
+                    <h3>Inverse Problem Solving and Mathematical Theory Methods</h3>
+                    <p>Exploring inverse problem solving in ultrasound tomography imaging, regularization methods, optimization algorithms, uncertainty quantification, and other mathematical theories and methods.</p>
+                </div>
+                
+                <div class="forum">
+                    <h3>AI-Based Computational Imaging Methods</h3>
+                    <p>Applications of deep learning and machine learning in ultrasound tomography imaging, including image reconstruction, segmentation, classification, and interpretation.</p>
+                </div>
+                
+                <div class="forum">
+                    <h3>Clinical Applications of Ultrasound Tomography Imaging</h3>
+                    <p>Research and case analysis of ultrasound tomography imaging applications in clinical fields such as breast cancer screening, liver disease diagnosis, and brain imaging.</p>
+                </div>
+            </section>
+
+            <section id="schedule" class="section">
+                <h2>Conference Schedule</h2>
+                <p>The detailed schedule will be announced before the conference. The preliminary arrangement is as follows:</p>
+                
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css">
+                <script src="https://cdn.tailwindcss.com"></script>
+                <style>
+                    .schedule-section {
+                        margin-bottom: 2rem;
+                        padding: 1.5rem;
+                        border-radius: 0.5rem;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    }
+                    .table-container {
+                        overflow-x: auto;
+                        margin-top: 1rem;
+                    }
+                    table {
+                        min-width: 100%;
+                        border-collapse: collapse;
+                    }
+                    th, td {
+                        padding: 0.75rem 1rem;
+                        text-align: left;
+                        border: 1px solid #e5e7eb;
+                    }
+                    th {
+                        background-color: #f3f4f6;
+                        font-weight: 600;
+                    }
+                    .section-title {
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        margin-bottom: 1rem;
+                        color: #1f2937;
+                    }
+                    .sub-section-title {
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                        margin: 1rem 0;
+                        color: #374151;
+                    }
+                </style>
+                <div class="schedule-section bg-white">
+                    <div class="section-title">I. Overall Schedule Overview</div>
+                    <div class="table-container">
+                        <table id="overview-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Content</th>
+                                    <th>Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table content will be dynamically generated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="schedule-section bg-white">
+                    <div class="section-title">II. Detailed Schedule</div>
+                    <div class="sub-section-title">(I) October 25, 2025</div>
+                    <div class="sub-section-title">1. Administrative Center Auditorium</div>
+                    <div class="table-container">
+                        <table id="detail-25-admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Speaker</th>
+                                    <th>Content</th>
+                                    <th>Host</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table content will be dynamically generated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="sub-section-title">2. Room 102, Building 3, Zhengyang</div>
+                    <div class="table-container">
+                        <table id="detail-25-zhengyang-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Speaker</th>
+                                    <th>Topic</th>
+                                    <th>Host</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table content will be dynamically generated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="schedule-section bg-white">
+                    <div class="sub-section-title">(II) October 26, 2025 (Room 102, Building 3, Zhengyang)</div>
+                    <div class="table-container">
+                        <table id="detail-26-zhengyang-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Speaker</th>
+                                    <th>Topic</th>
+                                    <th>Host</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table content will be dynamically generated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <script>
+                    // 1. Overall Schedule Overview Data
+                    const overviewData = [
+                        { date: 'October 24, 2025 (Friday)', time: '12:00-22:00', content: 'Conference Registration', note: 'Location: 1st Floor, Jinhua Dielai Yuansu Hotel' },
+                        { date: 'October 25, 2025 (Saturday)', time: '8:30-9:00', content: 'Opening Ceremony, Group Photo', note: '/' },
+                        { date: 'October 25, 2025 (Saturday)', time: '9:00-12:00', content: 'Keynote Speeches', note: '/' },
+                        { date: 'October 25, 2025 (Saturday)', time: 'Lunch Time', content: 'Lunch', note: 'Location: Shidarenjia Restaurant' },
+                        { date: 'October 25, 2025 (Saturday)', time: '13:30-17:00', content: 'Parallel Sessions', note: '/' },
+                        { date: 'October 25, 2025 (Saturday)', time: 'Dinner Time', content: 'Dinner', note: 'Location: Zhejiang Normal University International Exchange Center' },
+                        { date: 'October 26, 2025 (Sunday)', time: '8:30-12:00', content: 'Parallel Sessions', note: '/' },
+                        { date: 'October 26, 2025 (Sunday)', time: 'Lunch Time', content: 'Lunch', note: 'Location: Shidarenjia Restaurant' },
+                        { date: 'October 26, 2025 (Sunday)', time: '13:30-17:00', content: 'Free Discussion', note: '/' },
+                        { date: 'October 26, 2025 (Sunday)', time: '17:00', content: 'Departure of Experts', note: '/' }
+                    ];
+                    // 2. October 25 Administrative Center Auditorium Data
+                    const detail25AdminData = [
+                        { time: '8:30-8:35', speaker: 'Prof. Kong Dexing, Chairman of the Ultrasound Tomography Conference', content: 'Speech by Prof. Kong Dexing, Chairman of the Ultrasound Tomography Conference', host: 'Yang Feng' },
+                        { time: '8:35-8:50', speaker: 'Lin Yigang, Vice President of Zhejiang Normal University; Zeng Xiaopeng, Vice Chairman of Zhejiang Association for Science and Technology', content: 'Speech by Lin Yigang, Vice President of Zhejiang Normal University; Speech by Zeng Xiaopeng, Vice Chairman of Zhejiang Association for Science and Technology', host: 'Yang Feng' },
+                        { time: '8:50-9:00', speaker: '/', content: 'Group Photo', host: '/' },
+                        { time: '9:00-9:40', speaker: 'Ding Mingyue', content: 'Key Technologies and Clinical Trials of Breast Ultrasound Tomography', host: 'Yuan Jing' },
+                        { time: '9:40-10:20', speaker: 'Wang Yanfei', content: 'Geophysical inverse problems and imaging', host: 'Luo Shousheng' },
+                        { time: '10:20-10:40', speaker: '/', content: 'Tea Break', host: '/' },
+                        { time: '10:40-11:20', speaker: 'Zhang Guojun', content: 'Preliminary Study on Breast Ultrasound CT System Based on CMUT Ring Array', host: 'Ding Mingyue' },
+                        { time: '11:20-12:00', speaker: 'Liu Jijun', content: 'Ultrasound Electrical Impedance Tomography: Background, Models and Algorithms', host: 'Luo Shousheng' },
+                        { time: 'Lunch Time', speaker: '/', content: 'Lunch', host: 'Location: Shidarenjia Restaurant' }
+                    ];
+                    // 3. October 25 Room 102, Building 3, Zhengyang Data
+                    const detail25ZhengyangData = [
+                        { time: '13:30-14:00', speaker: 'Sun He', theme: 'Biomedical Inverse Scattering Imaging Based on Neurophysical Simulation', host: 'Yu Chuming' },
+                        { time: '14:00-14:30', speaker: 'Qiu Wu', theme: 'AI assisted Full Wave Inversion for Sound of Speed Reconstruction of USCT', host: 'Yu Chuming' },
+                        { time: '14:30-15:00', speaker: 'Cai Xiran', theme: 'Ultrasound Speed-of-Sound Tomography Based on Implicit Neural Representation', host: 'Yu Chuming' },
+                        { time: '15:00-15:20', speaker: '/', theme: 'Tea Break', host: '/' },
+                        { time: '15:20-16:00', speaker: 'Nicole Ruiter', theme: '3D Ultrasound Tomography at KIT: Current status', host: 'Qiu Wu' },
+                        { time: '16:00-16:30', speaker: 'Li Yubing', theme: 'High-Resolution Full-Wave Ultrasound Tomography: Methods and Applications', host: 'Qiu Wu' },
+                        { time: '16:30-17:00', speaker: 'Qu Xiaolei', theme: 'Research on Ring-Array Ultrasound Reflection Tomography and System Development', host: 'Qiu Wu' },
+                        { time: 'Dinner Time', speaker: '/', theme: 'Dinner', host: 'Location: Zhejiang Normal University International Exchange Center' }
+                    ];
+                    // 4. October 26 Room 102, Building 3, Zhengyang Data
+                    const detail26ZhengyangData = [
+                        { time: '8:30-9:00', speaker: 'Luo Yi', theme: 'AI-Enhanced Tomography for Transmission and Reflection Ultrasound Waves', host: 'Yuan Jing' },
+                        { time: '9:00-9:30', speaker: 'Zhang Xiaoqun', theme: '/', host: 'Yuan Jing' },
+                        { time: '9:30-10:00', speaker: 'Duan Yuping', theme: 'Starter-Iterator inspired Neural Operator for Solving Forward and Inverse Problems', host: 'Yuan Jing' },
+                        { time: '10:00-10:20', speaker: '/', theme: 'Tea Break', host: '/' },
+                        { time: '10:20-11:00', speaker: 'Liu Xiaodong', theme: 'A modified Newton method for cracks from the far field patterns with a fixed incident direction', host: 'Duan Yuping' },
+                        { time: '11:00-11:30', speaker: 'Zhang Di', theme: 'Quality Inspection and Standardization of Ultrasound CT Equipment Imaging', host: 'Duan Yuping' },
+                        { time: '11:30-12:00', speaker: 'Chen Kang', theme: 'Wearable Ultrasound Imaging and Therapy', host: 'Duan Yuping' },
+                        { time: 'Lunch Time', speaker: '/', theme: 'Lunch', host: 'Location: Shidarenjia Restaurant' },
+                    ];
+                    // Generic function: fill table with data
+                    function fillTable(tableId, data, columns) {
+                        const table = document.getElementById(tableId);
+                        const tbody = table.querySelector('tbody');
+                        tbody.innerHTML = '';
+                        data.forEach(item => {
+                            const tr = document.createElement('tr');
+                            columns.forEach(col => {
+                                const td = document.createElement('td');
+                                td.textContent = item[col] || '/';
+                                tr.appendChild(td);
+                            });
+                            tbody.appendChild(tr);
+                        });
+                    }
+                    window.onload = function() {
+                        fillTable('overview-table', overviewData, ['date', 'time', 'content', 'note']);
+                        fillTable('detail-25-admin-table', detail25AdminData, ['time', 'speaker', 'content', 'host']);
+                        fillTable('detail-25-zhengyang-table', detail25ZhengyangData, ['time', 'speaker', 'theme', 'host']);
+                        fillTable('detail-26-zhengyang-table', detail26ZhengyangData, ['time', 'speaker', 'theme', 'host']);
+                    };
+                </script>
+            </section>
+
+            <section id="speakers" class="section">
+                <h2>Invited Speakers</h2>
+                <p>The conference will invite renowned experts in the field of ultrasound tomography imaging from home and abroad to give keynote speeches. (Continuously updated)</p>
+                
+                <div class="speaker-grid">
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/liujijun.png" alt="Prof. Jijun Liu" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Jijun Liu</h3>
+                            <p>Second-level Professor at Southeast University, PhD supervisor, and recipient of the State Council Special Allowance. He has served as Head of the Department of Mathematics at Southeast University, Executive Deputy Director of the Yau Shing-tung Center at Southeast University, Executive Deputy Director of the Nanjing Center for Applied Mathematics, President of the Jiangsu Society for Industrial and Applied Mathematics, and an executive council member of the China Society for Industrial and Applied Mathematics. His research focuses on mathematical-physical inverse problems, large-scale scientific computing, and the mathematical theory and methods of media imaging. He has led several projects funded by the National Natural Science Foundation of China and has published over 150 academic papers in journals such as SIAM J. Appl. Mat. and IP. He has also published three academic monographs with Science Press. He has received funding from the NSFC (China), DAAD (Germany), and the 21Brain Project (South Korea) for international collaborative research. He served on the editorial board of Inverse Problems in Sciences and Engineering from 2012 to 2017 and has been on the editorial board of J. Inverse and Ill-posed Problems since 2018. As a project leader, he has received the first prize for Jiangsu Provincial Teaching Achievement, the third prize for Jiangsu Provincial Natural Science, and the second prize for Ministry of Education Natural Science.</p>
+                            <p>Talk: Ultrasound Electrical Impedance Tomography: Background, Models and Algorithms</p>
+                            <p class="collapsed" id="abstract-liujijun">Abstract: In recent years, interdisciplinary research, particularly the integration of science, engineering, and medicine, has played an increasingly important role in clinical diagnosis and treatment. Biomedical tissue image reconstruction, exemplified by technologies such as CT, EIT, MRI, and ultrasound imaging, is a crucial medical imaging technique. This technology generally involves using externally measurable information to non-invasively (or with minimal invasion) probe the internal structure or abnormal changes of human tissues, thereby assisting doctors in clinical diagnosis and treatment. The core technology involves a cross-disciplinary integration of biology, physics, chemistry, engineering, and mathematics, with imaging models and algorithms based on mathematical-physical inverse problems being the fundamental underlying technology. Electrical Impedance Tomography (EIT), due to its relatively simple data acquisition and non-radioactive nature, has found preliminary applications in clinical fields such as lung disease monitoring, brain function imaging, and cancer diagnosis. However, existing traditional EIT equipment, which only collects boundary current-potential information of biological tissues, suffers from low spatial resolution. In recent years, ultrasound-EIT, which fuses ultrasound information with EIT imaging models, has garnered significant academic attention. The basic principle is that ultrasound waves of a certain frequency emitted from outside the tissue cause changes in the internal conductivity, indirectly providing energy information at various points within the biological tissue, thus enabling more stable and efficient detection of electrical impedance. In this talk, we will introduce the medical background, physical principles, and basic data analysis techniques of biological tissue electrical impedance imaging, as well as the models and algorithms for ultrasound-EIT.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-liujijun', this)">Read More</button>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/louyi.png" alt="Yi Luo" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Yi Luo</h3>
+                            <p>Dr. Yi Luo is an expert in exploration geophysics, holding a bachelor's degree from the University of Science and Technology of China, a master's degree from the Institute of Geology and Geophysics, Chinese Academy of Sciences, and a Ph.D. from the University of Utah (1991). He has extensive industry experience, having worked at Sinopec, Chevron, and Saudi Aramco. Before 2021, he served for many years as the Chief Scientist at Saudi Aramco, the world's largest oil company, and as the Deputy Director of its Beijing Research Center. Dr. Luo is one of the main pioneers of Full-Waveform Inversion (FWI) technology, particularly as the theoretical creator of travel-time FWI, the most practical FWI technique today. His doctoral dissertation, "Wave Equation Travel-Time Inversion," laid the theoretical foundation for this technology, becoming one of the most cited papers in exploration geophysics and earning the SEG's highest technical achievement award in 2014. Travel-time FWI is now the most accurate practical seismic imaging technology available.</p>
+                            <p>Talk: AI-Enhanced Tomography for Transmission and Reflection Ultrasound Waves</p>
+                            <p class="collapsed" id="abstract-louyi">Abstract: This report delves into the application prospects and technical advantages of traditional Full-Waveform Inversion (FWI), Reverse Time Beamforming, and AI-enhanced FWI in the field of transcranial ultrasound imaging. The report innovatively proposes a new method for transcranial imaging based on a handheld ultrasound probe, providing a portable and high-precision imaging solution for clinical neuroimaging.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-louyi', this)">Read More</button>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/quxiaolei.png" alt="Prof. Xiaolei Qu" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Xiaolei Qu</h3>
+                            <p>Associate Professor and PhD supervisor at Beihang University. He graduated from the School of Software at Xi'an Jiaotong University in July 2007 with a bachelor's degree. In July 2009, he obtained his master's degree from the Institute of Image Recognition and Artificial Intelligence at Huazhong University of Science and Technology, where his research focused on the detection, tracking, and recognition of weak and small infrared targets. In September 2012, he graduated from the University of Tokyo with a Ph.D. in Biomedical Engineering, where his research focused on medical ultrasound imaging and medical image processing. After graduation, he worked as a senior engineer at the Samsung Techwin Japan Research Center in Fukuoka, Japan, focusing on image processing and image recognition. From June 2014 to March 2017, he was a postdoctoral researcher at the University of Tokyo, where his research focused on medical ultrasound tomography algorithms and ultrasound therapy monitoring methods. In April 2017, he returned to China and joined the School of Instrumentation and Optoelectronic Engineering at Beihang University, where he has been engaged in research and work on image processing, recognition, and medical ultrasound imaging. He has published over 40 academic papers and applied for more than 10 invention patents.</p>
+                            <p>Talk: Research on Ring-Array Ultrasound Reflection Tomography and System Development</p>
+                            <p class="collapsed" id="abstract-quxiaolei">Abstract: Ring-array ultrasound reflection tomography utilizes a ring-array probe to achieve 360° omnidirectional focusing, which can not only significantly improve the resolution of reflection images but also enable automatic 3D imaging of the breast, thus having potential application value in breast cancer screening. However, due to the large number of elements and complex structure of the ring-array system, as well as the relatively insufficient research on its beamforming direction, there are still many challenges. To address these issues, this report's research work mainly includes three aspects: first, studying a phase error correction method based on sound speed images and systematically analyzing the impact of different resolution sound speed images on the correction effect; second, exploring a fast sound speed image reconstruction method based on deep learning to improve imaging efficiency; and third, introducing the development progress of our team's breast ultrasound tomography system and looking forward to the next stage of research plans.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-quxiaolei', this)">Read More</button>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/wangyanfei.png" alt="Yanfei Wang" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Yanfei Wang</h3>
+                            <p>Researcher, recipient of the National Science Fund for Distinguished Young Scholars in 2013. His research focuses on inverse problem theory and regularization methods, mathematical optimization algorithms for inverse problems, computational and exploration geophysics, and big data and artificial intelligence analysis in geosciences. He has led several national key R&D projects, major projects of the National Natural Science Foundation, and original exploration projects. He has published over 150 papers, authored 6 academic books, and holds over 30 invention patents. He is the director of the Disciplinary Center for Oil and Gas Theory and Methods. He has been selected for the National Special Support Program for High-Level Talents and the National Hundred, Thousand, and Ten Thousand Talents Project, and has been honored as a Young and Middle-Aged Expert with Outstanding Contributions. He has received numerous awards, including the China Youth Science and Technology Award, the Chinese Academy of Sciences Young Talent Award, the Chinese Geophysical Society Annual Science and Technology Award, and the State Council Special Government Allowance.</p>
+                            <p>Talk: Geophysical inverse problems and imaging</p>
+                            <p class="collapsed" id="abstract-wangyanfei">Abstract: Geophysical inversion is the process of inferring the physical parameters and geometric structures of subsurface geological bodies from geophysical observation data. In the context of artificial intelligence, traditional inversion methods have been rapidly enhanced; for instance, in seismic waveform data recognition and classification, convolutional neural networks (CNNs) effectively extract waveform features. Their parallel computing capability also accelerates large-scale data processing, enabling real-time inversion. This talk will review the topic from multiple perspectives, including model-driven and data-driven geophysical inverse problems, general computational approaches to inverse problems, intelligent computing, and quantum computing. Future development outlooks are also presented.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-wangyanfei', this)">Read More</button>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/caixiran.png" alt="Dr. Xiran Cai" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Xiran Cai</h3>
+                            <p>Dr. Xiran Cai from ShanghaiTech University has long been engaged in cutting-edge research in biomedical ultrasound. His work focuses on exploring next-generation imaging, detection, and treatment methods for musculoskeletal diseases, tumors, and regenerative medicine. He has accumulated extensive research experience in the development of passive cavitation imaging methods, ultrasound tomography methods, and ultrasound detection and characterization methods for biological tissues. He has published over 50 academic papers, co-authored 2 chapters in a Springer-published monograph, and applied for 6 invention patents in China and the United States, with 2 granted. Dr. Cai was selected for the Shanghai High-Level Talent Introduction Program for Young Professionals and the Shanghai Young Science and Technology Talent Sailing Program. He serves as a Technical Program Committee Member for the IEEE International Ultrasonics Symposium (IUS) and as a co-chair for IUS sessions (2023, 2025). He has been invited to give 4 presentations at international and domestic academic conferences, including the 2025 International Symposium on Nonlinear Acoustics (2025 ISNA) and the 2022-2023 National Acoustics Conference. He received the second prize for the Young Forum report at the 2023 West Lake International Forum on Ultrasound in Medicine & International Contrast Ultrasound Symposium, the Best Presentation Award at the 2017 International Bone Densitometry Workshop (IBDW), and the 2017 IEEE IUS International Travel Grant. He has led 4 projects, including those funded by the National and Shanghai Natural Science Foundations.</p>
+                            <p>Talk: Ultrasound Speed-of-Sound Tomography Based on Implicit Neural Representation</p>
+                            <p class="collapsed" id="abstract-caixiran">Abstract: Ultrasound Speed-of-Sound Tomography (USCT) can capture the sound speed contrast difference between breast tumors and surrounding soft tissues, showing significant promise in the early screening of breast cancer. However, existing USCT image reconstruction methods generally suffer from a highly ill-posed inverse problem, leading to unstable image reconstruction and image quality that is susceptible to measurement errors. To address these issues, this study explores an ultrasound speed-of-sound tomography method based on Implicit Neural Representation (INR). In bent-ray tracing USCT, we combine Neural Radiance Fields (NeRF) with a BentRay propagation model, using a multi-layer perceptron to model the slowness field as a continuous function, proposing the BentRay-NeRF method. This method significantly outperforms the traditional Gauss-Newton method in terms of artifact suppression and image reconstruction stability. In Full-Waveform Inversion (FWI) USCT, to tackle the ill-posedness and cycle-skipping problems of the reconstruction, we propose the INR-FWI method. This method also uses a multi-layer perceptron to model the sound speed field as a continuous function and introduces implicit regularization constraints to ensure the smoothness of the solution space. In an unsupervised framework, it directly uses measured ultrasound waveform signals for sound speed image reconstruction, avoiding the reliance of traditional supervised methods on large-scale training data. In numerical simulation experiments and in-vivo human breast data, INR-FWI demonstrates stronger robustness and better imaging quality compared to the traditional conjugate gradient FWI method.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-caixiran', this)">Read More</button>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/chenkang.png" alt="Assoc. Prof. Kang Chen" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Kang Chen</h3>
+                            <p>Specially-appointed Associate Professor at Zhejiang Normal University, and a core member of the Intelligent Sensing and Digital Medical Equipment, and Ultrasound AI and Ultrasound Robotics teams at the College of Mathematical, Physical and Medical Sciences. He holds master's and doctoral degrees from the University of Tokyo and was a JSPS (Japan Society for the Promotion of Science) Postdoctoral Fellow. His main research area is medical diagnostic and therapeutic ultrasound. He has led one JSPS Postdoctoral Fellowship project and participated in two JSPS scientific research projects. He has published over 16 SCI academic papers in high-level journals such as APL, IEEE TBME, and IEEE UFFC, holds one US and one Japanese patent, and has received four domestic academic awards in Japan. He is a member of the Acoustical Society of Japan and the Japan Society for Precision Engineering.</p>
+                            <p>Talk: Wearable Ultrasound Imaging and Therapy</p>
+                            <p class="collapsed" id="abstract-chenkang">Abstract: This report introduces the cutting-edge ultrasound imaging methods in the field of wearable ultrasound and the research work of our team in this area. Wearable ultrasound imaging enables long-term real-time monitoring of target organs/areas, providing functions not available with traditional rigid probes. This report presents some of the progress made in wearable ultrasound imaging, including curvature-adaptive imaging, Doppler imaging, photoacoustic imaging, and elastography, as well as our team's research progress, mainly including cardiac patch ultrasound and a deep learning-based curvature image self-correction method.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-chenkang', this)">Read More</button>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/Ruiter.png" alt="Dr. Nicole V Ruiter" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Nicole V Ruiter</h3>
+                            <p>Dr. Nicole V. Ruiter is a senior scientist at the Institute for Data Processing and Electronics (IPE) at the Karlsruhe Institute of Technology (KIT). She holds a degree in Medical Informatics from the University of Heidelberg and a Ph.D. in Informatics from the University of Mannheim. Her research focuses on 3D ultrasound computed tomography (USCT), medical image reconstruction, and biomechanical modeling. She leads the development of the world’s first clinically applicable fully 3D USCT system for breast imaging, which is currently being evaluated in international clinical studies. Dr. Ruiter has authored over 100 scientific publications. She is also the inventor or co-inventor of several international patents in the field of ultrasound tomography. Dr. Ruiter is a regular speaker at international conferences and serves on scientific and technical committees in the fields of medical imaging, ultrasound technology, and biomedical engineering. Her work has been supported by national and international funding bodies, including the European Union, German Research Foundation (DFG), and industry partners.</p>
+                            <p>Talk: 3D Ultrasound Tomography at KIT: Current status</p>
+                            <p class="collapsed" id="abstract-ruiter">Abstract: The Karlsruhe Institute of Technology (KIT) is developing 3D Ultrasound Computed Tomography (3D USCT) for breast imaging. Unlike 2D USCT systems, 3D USCT enables fully volumetric, high-resolution imaging with nearly isotropic spatial resolution. This is achieved through a hemispherical arrangement of thousands of transducers that simultaneously capture reflection, speed of sound, and attenuation data. The current prototype, 3D USCT III, integrates custom transducer arrays, high-throughput analog/digital electronics, and GPU-accelerated reconstruction algorithms. It is the first true 3D USCT and was recently undergoing clinical validation at Vall d’Hebron University Hospital in Barcelona. By offering non-ionizing, reproducible, and patient-friendly imaging, 3D USCT has the potential to complement or even replace mammography and MRI in specific clinical scenarios, especially in early breast cancer detection.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-ruiter', this)">Read More</button>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/dingmingyue.png" alt="Prof. Mingyue Ding" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Mingyue Ding</h3>
+                            <p>Second-level Professor and PhD supervisor at the College of Life Science and Technology, Huazhong University of Science and Technology, and Chief Technologist of the High-end Biomedical Imaging Facility at HUST. Professor Ding is a recipient of the German Humboldt Fellowship, a Ministry of Education "Trans-Century Excellent Talent," and a "Distinguished Teacher" at HUST. He is also the head of the national first-class undergraduate program in Biomedical Engineering (Double Ten Thousand Plan). He graduated from the Department of Electronic Engineering at Beihang University in 1982 with a bachelor's degree in remote control and telemetry. In 1985, he received his master's degree in communication and electronic systems from the University of Electronic Science and Technology of China. In 1988, he obtained his Ph.D. in communication and electronic systems from the Department of Electronics and Information Engineering at HUST. From September 1991 to July 1993, he was a postdoctoral fellow at the Institute of Robotics and Mechatronics at the Technical University of Braunschweig, Germany. He became a professor at the Institute of Image Recognition and Artificial Intelligence at HUST in December 1993 and a PhD supervisor in pattern recognition and intelligent systems in June 1996. From November 2000, he was a researcher at the Robarts Research Institute at the University of Western Ontario, Canada. He returned to China in March 2005. From April 2005, he served as the deputy director of the Key Laboratory of Image Information Processing and Intelligent Control of the Ministry of Education. From 2005 to June 2008, he was a specially-appointed professor at HUST. From January 2006 to April 2012, he was the head of the Department of Biomedical Engineering at HUST. From May 2012 to May 2024, he was the assistant dean of the College of Life Science and Technology and head of the Department of Biomedical Engineering. He is a senior member of IEEE, a member of SPIE, a senior member of the Chinese Institute of Electronics, the Chinese Mechanical Engineering Society, and the Chinese Society of Biomedical Engineering. He is a former council member of the Chinese Society of Biomedical Engineering, a member of the expert committee of the China Medical Device Technology Innovation Alliance, the vice president of the Hubei Society of Biomedical Engineering, the deputy director of the Instrument Engineering Professional Committee of the Chinese Society of Ultrasound in Medicine and Engineering, and a standing committee member of the Life Electronics Branch of the Chinese Institute of Electronics. He is also a standing committee member of the Life Electronics Branch of the Chinese Institute of Electronics, a member of the Remanufacturing Branch of the Chinese Mechanical Engineering Society, and a member of the Nanotechnology in Oncology Committee of the Chinese Anti-Cancer Association. He is a member of the Ultrasound Equipment Technology Branch of the China Association for Medical Devices Industry, a standing committee member of the Quality and Standards Professional Committee, and a standing committee member of the Big Data and Artificial Intelligence Professional Committee. His main research interests include medical image processing, medical ultrasound imaging, and surgical navigation.</p>
+                            <p>Talk: Key Technologies and Clinical Trials of Breast Ultrasound Tomography</p>
+                            <p class="collapsed" id="abstract-dingmingyue">Abstract: Ultrasound tomography is a revolutionary technology that has developed in recent years. However, it still faces challenges such as small breast size and poor imaging quality in the early diagnosis of breast cancer. To address these issues, we have proposed key technologies such as solid couplant shaping and a fast scanning method based on sparse sampling, which have been applied and validated in GCP clinical trials. Through 440 multi-center clinical trials conducted at Wuhan Tongji Hospital and Hubei Cancer Hospital, the sensitivity and specificity for breast cancer both exceeded 90%. In September 2025, we obtained the first medical device product registration certificate for an ultrasound tomography system in China.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-dingmingyue', this)">Read More</button>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/zhangdi.png" alt="Prof. Di Zhang" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Di Zhang</h3>
+                            <p>Associate researcher at the Institute of Acoustics, Chinese Academy of Sciences. His main research areas are medical ultrasound imaging, ultrasound materials and measurement methods, and medical equipment standardization and quality inspection. He is currently a registered expert of the IEC/TC87 Ultrasound Technical Committee and a member of the Acoustic Metrology Branch of the Chinese Society for Measurement. He has developed and improved B-mode high and low-frequency phantoms, slice thickness phantoms, Doppler phantoms and blood flow control systems, quantitative phantoms for ultrasound bone densitometers, elastography phantoms, and puncture phantoms, all of which have been industrialized and widely applied. He has led several projects, including those funded by the National Natural Science Foundation of China, the "Young Talents" project of the Institute of Acoustics, and the instrument and equipment function development project of the Chinese Academy of Sciences. He has published more than 20 academic papers, holds 12 invention patents, and has co-authored two monographs: "Fundamentals and Clinical Applications of Medical Shock Waves" and "Biomedical Engineering (Second Edition)". He has participated in the standard review work of the Underwater Acoustics Branch of the National Technical Committee for Standardization of Acoustics and the Medical Ultrasound Branch of the National Technical Committee for Standardization of Medical Electrical Equipment. As a main drafter, he has revised 4 medical device industry standards and 2 group standards: T/CSBME 060-2022 "Ultrasound Computed Tomography Diagnostic Equipment" and T/SASC 03001-2025 "Technical Requirements for Photoacoustic Imaging Diagnostic Equipment". He is responsible for the standard revision work of the IEC/TC87 WG7 Ultrasound Surgery and Therapy Equipment Working Group and the WG9 Pulse-Echo Diagnostic Equipment Working Group.</p>
+                            <p>Talk: Quality Inspection and Standardization of Ultrasound CT Equipment Imaging</p>
+                            <p class="collapsed" id="abstract-zhangdi">Abstract: Ultrasound Computed Tomography (USCT) equipment shows significant advantages in the early screening and diagnosis of breast diseases due to its unique tomographic imaging, high resolution, multiple imaging modes, and flexible combinations, and has broad application prospects. For this special type of new ultrasound imaging medical device, the quality assurance testing method for its imaging is unique. Therefore, for USCT equipment based on a ring array, its imaging modes include reflection echo mode, transmission sound speed imaging, and transmission sound attenuation imaging. We have designed its dedicated reflection imaging resolution phantoms, imaging uniformity phantoms, transmission sound speed phantoms, and transmission attenuation phantoms. One of the advantages of USCT imaging over traditional ultrasound is that its images have standard tomographic slices, similar to X-CT and MRI. Therefore, the standardization of its images is a major trend, aiming to promote the comparability of imaging quality among different devices and the mutual recognition of clinical images. Based on the work of imaging quality inspection, we have drafted and released a group standard to promote the standardization process of this equipment in terms of acoustic imaging performance technical requirements.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-zhangdi', this)">Read More</button>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/sunhe.png" alt="Prof. He Sun" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>He Sun</h3>
+                            <p>Assistant Professor, Researcher, and PhD supervisor at the College of Future Technology, Peking University, and the National Center for Biomedical Imaging Sciences. He graduated from Peking University with a bachelor's degree and from Princeton University with a Ph.D. He conducted postdoctoral research at the California Institute of Technology with the support of the Amazon AI4Science Fellowship. His main research interests are artificial intelligence and computational imaging. His laboratory is dedicated to breaking the limits of extreme-scale observation by co-designing the physical and computational modules of imaging systems, and to developing next-generation scientific imaging instruments. His research has been applied to several major international scientific imaging missions, such as the Event Horizon Telescope's black hole imaging and the Roman Space Telescope's exoplanet imaging. It has also contributed to the development of high-end biomedical imaging equipment, such as ultrasound tomographs and super-resolution microscopes. He has led projects funded by the National Natural Science Foundation of China's Overseas Outstanding Young Scholars Program, General Program, and Original Exploration Program, as well as the Ministry of Science and Technology's Key R&D Program.</p>
+                            <p>Talk: Biomedical Inverse Scattering Imaging Based on Neurophysical Simulation</p>
+                            <p class="collapsed" id="abstract-sunhe">Abstract: High-resolution imaging of deep biological tissues has long been constrained by the computational bottlenecks of strong scattering and nonlinear propagation. Neural PDE solvers, with their efficiency and stability in approximating complex wave PDEs, are poised to become powerful tools for inverse scattering image reconstruction. However, limited by the scarcity of biomedical data and the insufficient generalization capabilities of existing neural operator networks, their imaging performance remains unsatisfactory. This report will introduce a novel inverse scattering solving framework based on neurophysical simulation and report its experimental results on full-wave ultrasound tomography. This method combines the high precision of traditional PDE physical modeling with the computational efficiency and stability of neural networks. It can achieve 3D ultrasound tomography reconstruction of human tissue mechanical parameters with a resolution comparable to MRI (about 1 mm) in about ten minutes, providing a new quantitative assessment solution for the clinical diagnosis of sports injuries and tumors. This framework can also be extended to optical diffraction tomography of thick samples such as organoids and embryos, opening up new avenues for cell biology research.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-sunhe', this)">Read More</button>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/qiuwu.png" alt="Prof. Wu Qiu" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Wu Qiu</h3>
+                            <p>Professor at the College of Life Science and Technology, Department of Biomedical Engineering, Huazhong University of Science and Technology. He is a recipient of the National High-Level Young Talents Program and a Hubei Provincial Government Special Allowance Expert. He was previously a researcher and assistant professor in the Department of Radiology and the Department of Clinical Neurosciences at the University of Calgary, Canada, and a researcher at the Robarts Research Institute, Western University, Canada. His main research focuses on the application of artificial intelligence in medical image analysis, including the imaging diagnosis of acute stroke and 3D ultrasound tomography (UCT). He has published over 100 papers in top international journals and conferences such as IEEE Trans. Medical Imaging, Medical Image Analysis, Radiology, Stroke, and MICCAI.</p>
+                            <p>Talk: AI assisted Full Wave Inversion for Sound of Speed Reconstruction of USCT</p>
+                            <p class="collapsed" id="abstract-qiuwu">Abstract: Ultrasound Computed Tomography (USCT) has emerged as a cutting-edge imaging modality, offering quantitative acoustic parameter maps to enhance disease diagnosis. Full-waveform Inversion (FWI), a mainstream reconstruction method, enables high-resolution imaging of the speed of sound (SOS) from USCT measurements. However, its strong sensitivity to the initial model and the anatomical distortions caused by cycle-skipping artifacts significantly hinder its application in complex clinical scenarios. In this talk, two AI assisted SOS reconstruction methods, e.g, an untrained neural network method and an implicit neural representation method, will be introduced. Experiments on numerical phantom, breast-mimicking phantom, and in vivo data will be demonstrated.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-qiuwu', this)">Read More</button>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/liuxiaodong.png" alt="Researcher Xiaodong Liu" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Xiaodong Liu</h3>
+                            <p>Researcher Xiaodong Liu graduated from Beijing Normal University in 2004 with a bachelor's degree and from the Academy of Mathematics and Systems Science, Chinese Academy of Sciences, in 2010 with a Ph.D. He then joined the academy. From 2011 to 2013, he was a Humboldt Fellow at the Karlsruhe Institute of Technology in Germany. His research focuses on inverse problems for partial differential equations, with a primary focus on the mathematical theory and algorithm design for inverse problems based on wave scattering. Based on this work, he was selected for the Chen Jingrun Future Star Program of the Academy of Mathematics, the Inspur Outstanding Young Academic Award, the Youth Innovation Promotion Association of the Chinese Academy of Sciences, and the National High-Level Young Talents Program.</p>
+                            <p>Talk: A modified Newton method for cracks from the far field patterns with a fixed incident direction</p>
+                            <p class="collapsed" id="abstract-liuxiaodong">Abstract: We consider the inverse cracks scattering problems from the far field patterns with a fixed incident direction. We firstly show that the sound-soft cracks can be uniquely determined by the multi-frequency far field patterns with a fixed incident direction. The proof is based on a low frequency asymptotic analysis of the scattered field. One important feature of the uniqueness result is that the background can even be an unknown inhomogeneous medium.A modified Newton method is then proposed for the numerical reconstruction of the shapes and locations of the cracks. Compared to the classical Newton method, the modified Newton method relaxes the dependence of a good initial guess and can be applied for multiple cracks. Numerical examples in two dimensions are presented to demonstrate the feasibility and effectiveness of the modified Newton method. In particular, the quality of the reconstructions can be greatly improved if we use the measurements properly with two frequencies or two incident directions.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-liuxiaodong', this)">Read More</button>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/duanyuping.png" alt="Prof. Yuping Duan" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Yuping Duan</h3>
+                            <p>Yuping Duan received her Ph.D. in computational mathematics from Nanyang Technological University in Singapore in 2012. From 2012 to 2015, she worked as a research scientist at the Institute for Infocomm Research, A*STAR, Singapore. In 2016, she became a professor and PhD supervisor at the Center for Applied Mathematics at Tianjin University. In 2023, she joined the School of Mathematical Sciences at Beijing Normal University. Her main research interests include variational image processing methods and model-driven deep learning methods. She has published over 70 papers in journals such as IEEE TPAMI, TIP, TMI, IP, and JSC, and at conferences such as CVPR and MICCAI. She holds 5 international/domestic patents. She has led several research projects, including the National Young Thousand Talents Program, the National Natural Science Foundation's General and Youth projects, and the Tianjin Major Science and Technology Project.</p>
+                            <p>Talk: Starter-Iterator inspired Neural Operator for Solving Forward and Inverse Problems</p>
+                            <p class="collapsed" id="abstract-duanyuping">Abstract: Operator learning is an interdisciplinary field that combines machine learning with scientific computing to construct efficient mappings between input and output function spaces, thereby reducing the computational complexity of solving high-dimensional partial differential equations. We introduce a novel neural operator framework, the Starter-Iterator inspired Neural Operator (SINO), which reimagines the initialization strategies and iteration formats of traditional methods using neural networks. This leads to a new paradigm for spectral-spatiotemporal collaborative modeling: frequency domain learning captures globally stable low-frequency features, while time domain learning refines local solution residuals, overcoming the limitations of traditional single-domain approaches. Extensive experiments on dynamic systems, including the Navier-Stokes and acoustic wave equations, demonstrate that SINO delivers exceptional numerical accuracy, generalization capability, and robustness.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-duanyuping', this)">Read More</button>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/liyubing.png" alt="Prof. Yubing Li" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Yubing Li</h3>
+                            <p>Researcher at the Institute of Acoustics, Chinese Academy of Sciences, and a 2023 recipient of the Chinese Academy of Sciences Talent Program. Her main research focuses on high-resolution ultrasound imaging and its applications, with a focus on precision diagnosis and treatment in medical acoustics. She graduated from Tongji University in 2011 with a bachelor's degree, and from the University of Science and Technology of China and Paris Diderot University in 2014 with a master's degree. In 2018, she received her Ph.D. from PSL Research University - MINES ParisTech. From 2018 to 2019, she conducted postdoctoral research at the University of Grenoble Alpes. From 2019 to 2021, she worked as a senior R&D scientist at the Saudi Aramco Beijing International R&D Center, where she conducted practical research on imaging algorithms for energy exploration, industrial inspection, and medical ultrasound. She has published over 20 high-level SCI and EI papers, holds 2 US invention patents and 4 Chinese invention patents. She has participated in one project funded by the French National Research Agency (ANR) and is leading one national key R&D project and one project funded by the National Natural Science Foundation. She organized three special sessions at the 2023 International Congress on Ultrasonics (ICU) on medical full-waveform inversion, ultrasound machine learning and statistical methods, and ultrasound equipment and signal processing, and one special session on medical full-waveform inversion at the 2025 ICU.</p>
+                            <p>Talk: High-Resolution Full-Wave Ultrasound Tomography: Methods and Applications</p>
+                            <p class="collapsed" id="abstract-liyubing">Abstract: Full-waveform inversion is a high-resolution acoustic parameter model reconstruction and imaging method based on optimization theory. Traditional B-mode ultrasound imaging methods, which use multiple sets of self-excited and self-received pulse-echo signals, rely on uniform speed and ray assumptions to reconstruct grayscale images of the target's structure, resulting in limited resolution, difficulty in identifying small lesions, and poor imaging performance in the presence of hard tissues with large sound speed differences, such as bones. This study adopts a surrounding ring-array full-matrix observation method to fully collect information from reflected, scattered, refracted, and transmitted waves. It uses a full-waveform inversion method based on a multi-parameter wave equation (sound speed, acoustic impedance, attenuation, etc.) to reconstruct the optimal numerical parameter model that can explain the observed signals. The results have a spatial resolution of millimeters or even sub-millimeters. Through numerical simulations, acoustic phantoms, ex-vivo tissue, and in-vivo experimental tests, it was found that the full-waveform inversion method successfully reconstructed high-resolution acoustic parameter models. The results are in good agreement with magnetic resonance imaging, fully verifying the robustness and effectiveness of the method.</p>
+                            <button class="toggle-btn" onclick="toggleAbstract('abstract-liyubing', this)">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="accommodation" class="section">
+                <h2>Accommodation</h2>
+                <p>During the conference, the organizing committee will provide recommended hotels for participants, and participants will book and pay for their own accommodation and meals.</p>
+                
+                <div class="important-dates">
+                    <h3>Recommended Hotel: Jinhua Die Lai Yuan Su Hotel</h3>
+                    <div class="date-item">
+                        <span class="date-label">Address:</span>
+                        <span>No. 29 Yuquan East Road, Wucheng District, Jinhua City, Zhejiang Province</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">Phone:</span>
+                        <span>0579-82608800 (Front Desk)</span>
+                    </div>
+                </div>
+                
+            </section>
+
+            <section id="contact" class="section">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, please contact the conference organizing committee at any time:</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>Liu Na</h3>
+                        <p>Phone: 18774964073</p>
+                        <p>Email: NanaLiu2024@zjnu.edu.cn</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>Lou Cuijuan</h3>
+                        <p>Phone: 18623718157</p>
+                        <p>Email: loucuijuan2024@zjnu.edu.cn</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>Cai Chao</h3>
+                        <p>Phone: 15926340843</p>
+                        <p>Email: chriscai@hust.edu.cn</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>Zhen Yin</h3>
+                        <p>Phone: 18166125362</p>
+                        <p>Email: zhen.yin@zjnu.edu.cn</p>
+                    </div>
+                </div>
+                
+                <h3>Conference Address</h3>
+                <p>Zhejiang Normal University (688 Yingbin Road, Jinhua City, Zhejiang Province, China, Postcode 321004)</p>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 First Ultrasound Tomography Imaging Conference Organizing Committee | College of Mathematics, Physics and Medicine, Zhejiang Normal University</p>
+        </div>
+    </footer>
+    <script>
+        function toggleAbstract(id, button) {
+            const abstract = document.getElementById(id);
+            abstract.classList.toggle('collapsed');
+            if (abstract.classList.contains('collapsed')) {
+                button.textContent = 'Read More';
+            } else {
+                button.textContent = 'Read Less';
+            }
+        }
+
+        // Navigation active state IntersectionObserver
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        const sections = [...document.querySelectorAll('section[id]')];
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>

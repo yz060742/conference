@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首届超声断层成像会议</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --brand-primary:#0055a4;
+            --brand-dark:#003366;
+            --brand-accent:#ffc107;
+            --brand-bg:#f5f7fa;
+            --text-color:#2f3640;
+            --radius-sm:6px;
+            --radius-md:10px;
+            --radius-lg:16px;
+            --shadow-sm:0 2px 4px rgba(0,0,0,.08);
+            --shadow-md:0 6px 18px rgba(0,0,0,.12);
+            --shadow-lg:0 12px 40px -4px rgba(0,0,0,.18);
+            --gradient-brand:linear-gradient(135deg,#003366 0%,#0055a4 50%,#0077cc 100%);
+        }
+        html {scroll-behavior:smooth;}
+        body {
+            font-family:'Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+            line-height:1.7;
+            color:var(--text-color);
+            background:radial-gradient(circle at 20% 20%,#ffffff 0%,#eef3f8 70%,#e4ebf3 100%);
+            -webkit-font-smoothing:antialiased;
+        }
+        
+        .header-container {
+            background: var(--gradient-brand);
+            color:#fff;
+            padding:3.2rem 0 3rem;
+            position:relative;
+            overflow:hidden;
+        }
+        .header-container:after {
+            content:"";
+            position:absolute;inset:0;
+            background:radial-gradient(circle at 80% 10%,rgba(255,255,255,.25),transparent 60%);
+            pointer-events:none;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .header-content h1 {font-size:clamp(2.4rem,4.2vw,3.4rem);margin-bottom:.65rem;letter-spacing:.5px;font-weight:700;}
+        
+        .header-content p {font-size:clamp(1rem,1.1vw,1.3rem);opacity:.92;letter-spacing:.5px;}
+        
+        nav {background:#18232fdd;backdrop-filter:blur(8px);position:sticky;top:0;z-index:1200;box-shadow:0 4px 14px -2px rgba(0,0,0,.25);}        
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .nav-language {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a {display:block;color:#f0f4f8;text-decoration:none;padding:.95rem 1.35rem;font-size:.95rem;font-weight:500;letter-spacing:.5px;position:relative;transition:.35s cubic-bezier(.4,0,.2,1);}        
+        nav a:after {content:"";position:absolute;left:50%;bottom:6px;width:0;height:3px;background:linear-gradient(90deg,var(--brand-accent),#ffe38a);border-radius:2px;transition:.35s;transform:translateX(-50%);}        
+        nav a:hover {color:#fff;}        
+        nav a.active {color:#fff;}        
+        nav a.active:after,nav a:hover:after {width:60%;}
+        
+        .container {max-width:1320px;margin:2.2rem auto;padding:0 28px;}
+        
+        .main-content {background:#ffffff;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:3.2rem 3rem;margin-bottom:2.8rem;position:relative;overflow:hidden;}
+        .main-content:before {content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(0,85,164,.05),rgba(255,193,7,.04));pointer-events:none;}
+        
+        .section {margin-bottom:4rem;scroll-margin-top:110px;}
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        h2 {color:var(--brand-dark);font-size:clamp(2.1rem,2.6vw,3rem);margin-bottom:1.7rem;padding-bottom:.9rem;border-bottom:2px solid var(--brand-primary);position:relative;line-height:1.15;font-weight:700;letter-spacing:.5px;}
+        
+        h2:after {content:'';position:absolute;bottom:-2px;left:0;width:110px;height:4px;background:linear-gradient(90deg,var(--brand-accent),#ffe38a);border-radius:2px;}
+        
+        h3 {color:var(--brand-primary);margin:1.25rem 0 .85rem;font-weight:600;letter-spacing:.4px;}
+        
+        p {margin-bottom:1.05rem;line-height:1.78;font-size:1.02rem;}
+        
+        .important-dates {
+            background-color: #e9f4ff;
+            border-left: 4px solid #0055a4;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        
+        .date-item {
+            display: flex;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 0;
+        }
+        
+        .date-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .date-label {
+            font-weight: bold;
+            min-width: 120px;
+            color: #003366;
+        }
+        
+        .forum {background:#f4f8fb;border:1px solid #e2edf5;border-left:5px solid var(--brand-primary);padding:1.35rem 1.5rem;margin-bottom:1.6rem;border-radius:0 var(--radius-md) var(--radius-md) 0;transition:.35s;}        
+        
+        .forum:hover {transform:translateY(-4px);box-shadow:0 10px 26px -4px rgba(0,0,0,.18);background:#ffffff;}
+        
+        .speaker-grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:2.2rem;margin-top:2.4rem;align-items:stretch;}
+
+        @media (max-width: 900px) {
+            .speaker-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        .speaker {background:linear-gradient(160deg,#ffffff 0%,#f4f7fa 100%);border-radius:18px;overflow:hidden;box-shadow:0 10px 34px -8px rgba(0,40,75,.25);transition:.55s cubic-bezier(.19,1,.22,1);border:1px solid #e5eef4;position:relative;display:flex;flex-direction:column;isolation:isolate;}
+        
+        .speaker:hover {transform:translateY(-10px) scale(1.015);box-shadow:0 30px 56px -14px rgba(0,40,75,.35);}        
+        
+        .speaker::before {content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--brand-primary) 0%,#007ed9 40%,var(--brand-accent) 100%);}        
+        
+        .speaker-img-placeholder,.speaker-img-container {aspect-ratio:4/3;width:100%;max-height:330px;background:linear-gradient(135deg,#dbe7f0 0%,#b9cfe0 100%);display:flex;align-items:center;justify-content:center;color:#495057;font-weight:600;overflow:hidden;position:relative;}
+        
+        .speaker-img-container::after {content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.35),rgba(0,0,0,.05));mix-blend-mode:multiply;opacity:.4;transition:.5s;}
+        .speaker:hover .speaker-img-container:after {opacity:.55;}
+        
+        .speaker-img {display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s cubic-bezier(.19,1,.22,1);filter:saturate(105%);}        
+        
+        .speaker:hover .speaker-img {transform:scale(1.08);}        
+        
+        .speaker-info {padding:1.55rem 1.4rem 1.9rem;position:relative;display:flex;flex-direction:column;gap:.75rem;flex-grow:1;}
+        
+        .speaker-info h3 {margin:0 0 .55rem;color:var(--brand-dark);font-size:1.35rem;font-weight:700;letter-spacing:.4px;position:relative;}
+        
+        .speaker-info h3::after {content:'';position:absolute;bottom:-6px;left:0;width:60px;height:4px;background:linear-gradient(90deg,var(--brand-primary),var(--brand-accent));border-radius:2px;opacity:.9;}
+        
+        .speaker-info p {margin-bottom:.85rem;line-height:1.65;color:#4a5662;font-size:.92rem;}
+        
+        .speaker-info p:nth-of-type(1) {font-style:italic;color:#65707c;margin-bottom:1.05rem;}
+        
+        .speaker-info p:nth-of-type(2) {font-weight:600;color:var(--brand-primary);background:#e9f4ff;padding:.55rem .85rem;border-radius:8px;border-left:5px solid var(--brand-primary);margin-bottom:.95rem;box-shadow:inset 0 0 0 1px #d1e6f5;}
+        
+        .speaker-info p:nth-of-type(3) {background:#f7f9fb;padding:1rem .95rem;border-radius:10px;border:1px solid #dfe7ed;font-size:.9rem;line-height:1.55;}
+        .speaker-info .toggle-btn {align-self:flex-start;background:var(--brand-primary);color:#fff;border:none;border-radius:24px;font-size:.75rem;letter-spacing:.5px;padding:.45rem .95rem;margin-top:.25rem;cursor:pointer;font-weight:600;display:inline-flex;gap:.35rem;align-items:center;box-shadow:0 4px 12px -2px rgba(0,85,164,.4);transition:.35s;}
+        .speaker-info .toggle-btn:hover {background:#003f7d;}
+        .speaker-info .collapsed {max-height:6.5rem;overflow:hidden;position:relative;}
+        .speaker-info .collapsed:after {content:"";position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(to top,#f7f9fb 10%,rgba(247,249,251,0));}
+        
+        .contact-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:1.5rem;}
+        
+        .contact-card {background:#ffffff;border-radius:14px;padding:1.4rem 1.35rem;box-shadow:0 6px 18px -6px rgba(0,0,0,.15);border:1px solid #e3ecf2;position:relative;overflow:hidden;}
+        .contact-card:before {content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--brand-primary),var(--brand-accent));}
+        
+        .contact-card h3 {
+            color: #003366;
+            margin-top: 0;
+        }
+        
+        footer {background:#0f1822;color:#d9e2ea;text-align:center;padding:2.4rem 0;margin-top:3rem;position:relative;overflow:hidden;}
+        footer:before {content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.12),transparent 65%);opacity:.5;}
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        @media (max-width: 1040px){
+            .main-content {padding:2.4rem 2.1rem;}
+            h2 {font-size:clamp(1.9rem,3.4vw,2.4rem);}        
+        }
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .header-content p {
+                font-size: 1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            nav a {
+                padding: 0.8rem 1rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .speaker-grid, .contact-grid {grid-template-columns:1fr;}
+            nav a {padding:.85rem 1rem;}
+            .speaker-info p {font-size:.95rem;}
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <h1>首届超声断层成像会议</h1>
+                <p>2025年10月24日-10月26日 · 中国·浙江师范大学</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#about">会议简介</a>
+                <a href="#topics">会议主题</a>
+                <a href="#schedule">会议日程</a>
+                <a href="#speakers">特邀嘉宾</a>
+                <a href="#accommodation">食宿安排</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            <div class="nav-language">
+                <a href="website_en.html">English</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="main-content">
+            <section id="home" class="section">
+                <h2>欢迎参加首届超声断层成像会议</h2>
+                <p>由浙江师范大学数理医学院、华中科技大学生命科学与技术学院、湖北省高端生物医学成像重大科技基础设施、湖北省生物医学工程学会共同主办的"首届超声断层成像会议"将于2025年10月24日至10月26日在浙江师范大学举行。</p>
+                <p>本次研讨会旨在促进超声断层成像、反问题求解相关数学理论方法等相关领域的学术交流，并讨论该领域的最新研究进展及其临床应用。</p>
+            </section>
+
+            <section id="about" class="section">
+                <h2>会议简介</h2>
+                <p>超声断层成像(Ultrasound Tomography)是一种新兴的医学成像技术，它通过测量超声波在组织中的传播特性来重建组织的声学参数分布。与传统超声成像相比，超声断层成像能够提供更定量、更准确的诊断信息。</p>
+                <p>该技术基于超声波在不同介质中传播速度、衰减和散射特性的差异，通过多角度发射和接收超声信号，利用先进的数学算法重建出组织的声速、密度和衰减系数等参数的二维或三维分布图像。这种定量化的成像方式克服了传统超声成像主观性强、难以标准化的缺点。</p>
+                <p>超声断层成像在乳腺癌筛查、肝脏纤维化评估、骨密度测量等临床应用中展现出巨大潜力。特别是在乳腺癌早期诊断方面，该技术能够提供类似MRI的高对比度图像，同时避免了辐射暴露和高昂费用，具有重要的临床价值和发展前景。</p>
+                <p>本次会议将汇集国内外超声断层成像领域的专家学者，共同探讨该技术的最新研究进展、数学理论方法、计算成像算法以及临床应用前景。</p>
+                
+                <div class="important-dates">
+                    <h3>重要信息</h3>
+                    <div class="date-item">
+                        <span class="date-label">会议日期:</span>
+                        <span>2025年10月24日-10月26日</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">会议地点:</span>
+                        <span>浙江师范大学 (中国浙江省金华市迎宾路688号，邮编321004)</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">主办单位:</span>
+                        <span>浙江师范大学数理医学院、华中科技大学生命科学与技术学院、湖北省高端生物医学成像重大科技基础设施、湖北省生物医学工程学会</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">承办单位:</span>
+                        <span>浙江师范大学数理医学院</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="topics" class="section">
+                <h2>会议主题</h2>
+                <p>会议将围绕以下主题展开深入讨论：</p>
+                
+                <div class="forum">
+                    <h3>超声断层成像技术</h3>
+                    <p>包括但不限于：超声断层成像系统设计、信号采集与处理、图像重建算法、多模态成像融合等。</p>
+                </div>
+                
+                <div class="forum">
+                    <h3>反问题求解与数学理论方法</h3>
+                    <p>探讨超声断层成像中的逆问题求解、正则化方法、优化算法、不确定性量化等数学理论和方法。</p>
+                </div>
+                
+                <div class="forum">
+                    <h3>基于人工智能的计算成像方法</h3>
+                    <p>深度学习、机器学习在超声断层成像中的应用，包括图像重建、分割、分类和解释等。</p>
+                </div>
+                
+                <div class="forum">
+                    <h3>超声断层成像临床应用</h3>
+                    <p>超声断层成像在乳腺癌筛查、肝脏疾病诊断、脑成像等临床领域的应用研究与案例分析。</p>
+                </div>
+            </section>
+
+            <section id="schedule" class="section">
+                    <!-- 新版会议日程安排内容开始 -->
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css">
+                    <script src="https://cdn.tailwindcss.com"></script>
+                    <style>
+                        .schedule-section {
+                            margin-bottom: 2rem;
+                            padding: 1.5rem;
+                            border-radius: 0.5rem;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        }
+                        .table-container {
+                            overflow-x: auto;
+                            margin-top: 1rem;
+                        }
+                        table {
+                            min-width: 100%;
+                            border-collapse: collapse;
+                        }
+                        th, td {
+                            padding: 0.75rem 1rem;
+                            text-align: left;
+                            border: 1px solid #e5e7eb;
+                        }
+                        th {
+                            background-color: #f3f4f6;
+                            font-weight: 600;
+                        }
+                        .section-title {
+                            font-size: 1.25rem;
+                            font-weight: 600;
+                            margin-bottom: 1rem;
+                            color: #1f2937;
+                        }
+                        .sub-section-title {
+                            font-size: 1.1rem;
+                            font-weight: 500;
+                            margin: 1rem 0;
+                            color: #374151;
+                        }
+                    </style>
+                    <div class="schedule-section bg-white">
+                        <div class="section-title">一、整体日程概览</div>
+                        <div class="table-container">
+                            <table id="overview-table">
+                                <thead>
+                                    <tr>
+                                        <th>日期</th>
+                                        <th>时间</th>
+                                        <th>内容</th>
+                                        <th>备注</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 表格内容将通过JS动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="schedule-section bg-white">
+                        <div class="section-title">二、详细日程安排</div>
+                        <div class="sub-section-title">（一）2025年10月25日</div>
+                        <div class="sub-section-title">1. 行政中心报告厅</div>
+                        <div class="table-container">
+                            <table id="detail-25-admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>报告人</th>
+                                        <th>内容</th>
+                                        <th>主持人</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 表格内容将通过JS动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="sub-section-title">2. 正阳楼3号楼102会议室</div>
+                        <div class="table-container">
+                            <table id="detail-25-zhengyang-table">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>报告人</th>
+                                        <th>主题</th>
+                                        <th>主持人</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 表格内容将通过JS动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="schedule-section bg-white">
+                        <div class="sub-section-title">（二）2025年10月26日（正阳楼3号楼102会议室）</div>
+                        <div class="table-container">
+                            <table id="detail-26-zhengyang-table">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>报告人</th>
+                                        <th>主题</th>
+                                        <th>主持人</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 表格内容将通过JS动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <script>
+                        // 1. 整体日程概览数据
+                        const overviewData = [
+                            { date: '2025年10月24日（星期五）', time: '12:00-22:00', content: '会议报到', note: '地点：金华蝶来元素酒店一楼' },
+                            { date: '2025年10月25日（星期六）', time: '8:30-9:00', content: '开幕式、合影', note: '/' },
+                            { date: '2025年10月25日（星期六）', time: '9:00-12:00', content: '大会主题报告', note: '/' },
+                            { date: '2025年10月25日（星期六）', time: '午餐时间', content: '午餐', note: '地点：师大人家餐厅' },
+                            { date: '2025年10月25日（星期六）', time: '13:30-17:00', content: '分会报告', note: '/' },
+                            { date: '2025年10月25日（星期六）', time: '晚餐时间', content: '晚餐', note: '地点：浙江师范大学国际交流中心' },
+                            { date: '2025年10月26日（星期日）', time: '8:30-12:00', content: '分会报告', note: '/' },
+                            { date: '2025年10月26日（星期日）', time: '午餐时间', content: '午餐', note: '地点：师大人家餐厅' },
+                            { date: '2025年10月26日（星期日）', time: '13:30-17:00', content: '自由讨论', note: '/' },
+                            { date: '2025年10月26日（星期日）', time: '17:00', content: '专家离会', note: '/' }
+                        ];
+                        // 2. 10月25日行政中心报告厅数据
+                        const detail25AdminData = [
+                            { time: '8:30-8:35', speaker: '超声断层成像会议主席孔德兴教授', content: '超声断层成像会议主席孔德兴教授致辞', host: '杨锋' },
+                            { time: '8:35-8:50', content: '浙江师范大学副校长林一钢致辞、浙江省科学技术协会副主席曾肖芃致辞', host: '杨锋' },
+                            { time: '8:50-9:00', speaker: '/', content: '会议合影', host: '/' },
+                            { time: '9:00-9:40', speaker: '丁明跃', content: '乳腺超声断层成像关键技术与临床试验', host: '袁景' },
+                            { time: '9:40-10:20', speaker: '王彦飞', content: 'Geophysical inverse problems and imaging', host: '罗守胜' },
+                            { time: '10:20-10:40', speaker: '/', content: '茶歇', host: '/' },
+                            { time: '10:40-11:20', speaker: '张国军', content: '基于CMUT环阵的乳腺超声CT系统初步研究', host: '丁明跃' },
+                            { time: '11:20-12:00', speaker: '刘继军', content: '超声电阻抗成像：背景、模型和算法', host: '罗守胜' },
+                            { time: '午餐时间', speaker: '/', content: '午餐', host: '地点：师大人家餐厅' }
+                        ];
+                        // 3. 10月25日正阳楼3号楼102会议室数据
+                        const detail25ZhengyangData = [
+                            { time: '13:30-14:00', speaker: '孙赫', theme: '基于神经物理仿真的生物医学反散射成像', host: '尉迟明' },
+                            { time: '14:00-14:30', speaker: '邱武', theme: 'AI assisted Full Wave Inversion for Sound of Speed Reconstruction of USCT', host: '尉迟明' },
+                            { time: '14:30-15:00', speaker: '蔡夕然', theme: '基于隐式神经表达的超声声速断层成像方法', host: '尉迟明' },
+                            { time: '15:00-15:20', speaker: '/', theme: '茶歇', host: '/' },
+                            { time: '15:20-16:00', speaker: 'Nicole Ruiter', theme: '3D Ultrasound Tomography at KIT: Current status', host: '邱武' },
+                            { time: '16:00-16:30', speaker: '李玉冰', theme: '高分辨率全波超声断层成像方法与应用研究', host: '邱武' },
+                            { time: '16:30-17:00', speaker: '屈晓磊', theme: '环阵超声反射层析成像方法研究与系统研制', host: '邱武' },
+                            { time: '晚餐时间', speaker: '/', theme: '晚餐', host: '地点：浙师大国际交流中心' }
+                        ];
+                        // 4. 10月26日正阳楼3号楼102会议室数据
+                        const detail26ZhengyangData = [
+                            { time: '8:30-9:00', speaker: '骆毅', theme: 'AI-Enhanced Tomography for Transmission and Reflection Ultrasound Waves', host: '袁景' },
+                            { time: '9:00-9:30', speaker: '张小群', theme: '/', host: '袁景' },
+                            { time: '9:30-10:00', speaker: '段玉萍', theme: 'Starter-Iterator inspired Neural Operator for Solving Forward and Inverse Problems', host: '袁景' },
+                            { time: '10:00-10:20', speaker: '/', theme: '茶歇', host: '/' },
+                            { time: '10:20-11:00', speaker: '刘晓东', theme: 'A modified Newton method for cracks from the far field patterns with a fixed incident direction', host: '段玉萍' },
+                            { time: '11:00-11:30', speaker: '张迪', theme: '超声CT设备成像质量检验及标准化', host: '段玉萍' },
+                            { time: '11:30-12:00', speaker: '陈康', theme: '可穿戴超声成像及治疗', host: '段玉萍' },
+                            { time: '午餐时间', speaker: '/', theme: '午餐', host: '地点：师大人家餐厅' },
+
+                        ];
+                        // 通用函数：向表格中填充数据
+                        function fillTable(tableId, data, columns) {
+                            const table = document.getElementById(tableId);
+                            const tbody = table.querySelector('tbody');
+                            tbody.innerHTML = '';
+                            data.forEach(item => {
+                                const tr = document.createElement('tr');
+                                columns.forEach(col => {
+                                    const td = document.createElement('td');
+                                    td.textContent = item[col] || '/';
+                                    tr.appendChild(td);
+                                });
+                                tbody.appendChild(tr);
+                            });
+                        }
+                        window.onload = function() {
+                            fillTable('overview-table', overviewData, ['date', 'time', 'content', 'note']);
+                            fillTable('detail-25-admin-table', detail25AdminData, ['time', 'speaker', 'content', 'host']);
+                            fillTable('detail-25-zhengyang-table', detail25ZhengyangData, ['time', 'speaker', 'theme', 'host']);
+                            fillTable('detail-26-zhengyang-table', detail26ZhengyangData, ['time', 'speaker', 'theme', 'host']);
+                        };
+                    </script>
+                    <!-- 新版会议日程安排内容结束 -->
+            </section>
+
+            <section id="speakers" class="section">
+                <h2>特邀嘉宾</h2>
+                <p>会议将邀请国内外超声断层成像领域的知名专家作主题报告。(陆续更新中)</p>
+                
+                <div class="speaker-grid">
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/liujijun.png" alt="刘继军 教授" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>刘继军</h3>
+                            <p>东南大学二级教授，博士生导师，享受国务院政府特殊津贴专家。历任东南大学数学系主任、东南大学丘成桐中心常务副主任、南京应用数学中心常务副主任、江苏省工业与应用数学学会理事长、中国工业与应用数学学会常务理事。长期从事数学物理反问题、大规模科学计算和介质成像的数学理论和方法的研究。主持完成多项国家自然科学基金项目。已在SIAM J. Appl. Mat、 IP等刊物发表学术论文150余篇，在科学出版社出版学术专著3本。曾受中国NSFC、德国DAAD、韩国21Brain Project等资助赴国外开展合作研究。2012-2017年任Inverse Problems in Sciences and Engineering编委，2018年起任J. Inverse and Ill-posed Problems编委。 作为主持人获江苏省教学成果一等奖、江苏省自然科学三等奖、教育部自然科学二等奖。</p>
+                            <p>报告题目：超声电阻抗成像：背景、模型和算法</p>
+                            <p>报告摘要：近年来，以理工医结合为代表的多学科交叉研究在医学临床诊疗中发挥着日益重要的作用，以CT成像，EIT成像， MRI成像、Ultrasonic成像为典型代表的生物组织图像重建就是一类重要的医学成像技术。这类技术的一般描述就是通过人体外部可测量的信息，以无损（或者损伤尽可能少）的检测信息来探测人体内部组织结构或异常变化，由此帮助医生进行临床诊断和治疗，其核心技术涉及到生物、物理、化学、工程、数学等多学科的交叉，其中基于数学物理反问题的成像模型和和算法是成像过程底层核心技术。电阻抗成像（Electrical Impedance Tomography, EIT）由于其数据采集相对简单、无放射性等优点，在肺部疾病监测、脑功能成像、癌症诊断等医学临床领域得到了初步的应用。但是现有的传统的EIT设备由于只采集生物组织的边界电流-电势信息，具有空间分辨率低的缺点。 近年来，基于超声信息和EIT成像模型融合的超声电阻抗成像得到了学术界的高度关注，其基本的原理是组织外部发射的一定频率的超声波会引起组织内部电导率的变化，由此可以间接得到生物组织内部各点的能量信息，从而可以更为稳定、高效地检测电阻抗。在这个报告中，我们将介绍生物组织电阻抗成像的医学背景、物理原理及数据分析的基本技术，以及超声电阻抗成像的模型和算法。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/louyi.png" alt="骆毅" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>骆毅</h3>
+                            <p>骆毅博士是勘探地球物理学专家，拥有中国科学技术大学学士学位、中科院地质与地球物理研究所硕士学位，以及美国犹他大学博士学位（1991年）。他拥有丰富的行业经验，曾先后任职于中国石化、雪佛龙石油公司、沙特阿美石油公司，并于2021年前多年担任全球最大石油公司——沙特阿美公司首席科学家一职， 以及北京研究中心副主任。骆毅博士是全波形反演（FWI）技术的主要奠基人之一，特别是走时全波形反演（当前最实用的FWI技术）的理论创建者。他的博士论文《波动方程走时反演》奠定了该技术的理论基础，成为勘探地球物理学领域引用率最高的文章之一，并荣获SEG（勘探地球物理学会）2014年度最高技术成就奖。走时全波形反演技术现已成为当前最精确的实用地震成像技术。</p>
+                            <p>报告题目：AI-Enhanced Tomography for Transmission and Reflection Ultrasound Waves</p>
+                            <p>报告摘要：该报告深入探讨了传统全波形反演（FWI）技术、逆时波束形成（Reverse Time Beamforming）技术，以及人工智能增强的全波形反演技术在颅脑超声成像领域的应用前景与技术优势。报告创新性地提出了一种基于手持式超声探头的颅脑成像新方法，为临床神经影像学提供了便携式、高精度的成像解决方案。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/quxiaolei.png" alt="屈晓磊 教授" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>屈晓磊</h3>
+                            <p>北京航空航天大学，博士生导师，副教授。2007年7月本科毕业于西安交通大学软件学院；2009年7月硕士毕业于华中科技大学图像识别与人工智能研究所，硕士期间主要从事红外弱小目标的检测、跟踪和识别的相关研究；2012年9月毕业于日本东京大学生物医学工程专业，博士期间主要从事医学超声波成像和医学图像处理的研究；毕业后任职三星泰科日本研究中心（日本福冈）高级工程师，主要从事图像处理和图像识别的工作；2014年6月至2017年3月任职东京大学博士后研究员，研究集中在医学超声波层析成像算法和超声波治疗监控方法上；2017年4月回国任职于北京航空航天大学仪器科学与光电工程学院至今，回国后一直从事图像处理、识别和医学超声成像方面的研究和工作，公开发表学术论文40余篇，申请发明专利10余项。</p>
+                            <p>报告题目：环阵超声反射层析成像方法研究与系统研制</p>
+                            <p>报告摘要：环阵超声反射层析成像利用环阵探头实现360°全向聚焦，不仅能够显著提升反射图像的分辨率，还可实现乳腺的自动三维成像，因此在乳腺癌筛查中具有潜在应用价值。然而，由于环阵系统阵元数量庞大、结构复杂，且其波束形成方向的相关研究相对不足，仍存在诸多挑战。针对上述问题，本报告的研究工作主要包括三方面：第一，研究基于声速图像的相位误差校正方法，系统分析不同分辨率声速图像对校正效果的影响；第二，探索基于深度学习的快速声速图像重建方法，以提升成像效率；第三，介绍本团队乳腺超声层析成像系统的研制进展，并展望下一阶段的研究计划。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/wangyanfei.png" alt="王彦飞" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>王彦飞</h3>
+                            <p>王彦飞，研究员，2013年杰青，从事反问题理论及正则化方法、反问题数学优化算法、计算及勘探地球物理、地学大数据与人工智能分析研究工作。主持国家重点研发计划项目、基金重大计划项目、基金原创探索项目等多项，发表论文150余篇，出版学术论著6部，授权发明专利30余项。任油气理论与方法学科中心主任。入选国家高层次人才特支计划、国家百千万人才工程，授予有突出贡献中青年专家。获中国青年科技奖、中国科学院青年人才奖、中国地球物理学会年科技奖、国务院政府特殊津贴专家等多项奖励荣誉。</p>
+                            <p>报告题目：Geophysical inverse problems and imaging</p>
+                            <p>报告摘要：Geophysical inversion is the process of inferring the physical parameters and geometric structures of subsurface geological bodies from geophysical observation data. In the context of artificial intelligence, traditional inversion methods have been rapidly enhanced; for instance, in seismic waveform data recognition and classification, convolutional neural networks (CNNs) effectively extract waveform features. Their parallel computing capability also accelerates large-scale data processing, enabling real-time inversion. This talk will review the topic from multiple perspectives, including model-driven and data-driven geophysical inverse problems, general computational approaches to inverse problems, intelligent computing, and quantum computing. Future development outlooks are also presented.</p>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/caixiran.png" alt="蔡夕然 博士" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>蔡夕然</h3>
+                            <p>上海科技大学，蔡夕然博士长期在生物医学超声前沿领域开展研究，围绕肌骨系统疾病、肿瘤和再生医学等方向探索下一代成像、检测和治疗方法，主要在被动空化成像方法开发、超声断层成像方法开发、生物组织超声检测和表征方法等方面积累了丰富的研究经验，共发表学术论文50余篇，受邀撰写Springer出版专著2章，申请中国和美国发明专利6项，授权2项。蔡夕然入选上海市高层次人才引进计划青年项目、上海市青年科技英才扬帆计划，担任IEEE国际超声大会（IUS）技术程序委员会委员（Technical Program Committee Member）、IEEE IUS分会场联合主席（2023，2025），受邀在2025国际非线性声学大会（2025 ISNA）、2022-2023全国声学大会等国际国内学术会议做邀请报告4次；获得2023西湖国际超声医学论坛暨国际超声造影会议青年论坛报告二等奖、2017年国际骨密度计量学研讨会（IBDW）最佳报告奖和2017年IEEE IUS国际旅行资助奖，主持国家、上海自然科学基金等项目4项。（IBD</p>
+                            <p>报告题目：基于隐式神经表达的超声声速断层成像方法</p>
+                            <p>报告摘要：超声声速断层成像（USCT）可以获得乳腺肿瘤与周围软组织的声速对比度差异，在乳腺癌早期筛查中展现出重要的应用前景。然而，现有超声声速断层图像重建方法普遍存在图像重建逆问题高度病态的问题，导致图像重建不稳定、图像质量易受测量误差干扰。针对上述问题，本研究探索了基于隐式神经表达（Implicit Neural Representation, INR）的超声声速断层成像方法。在弯曲射线追迹USCT中，我们将神经辐射场（Neural Radiance Fields, NeRF）与弯曲射线（BentRay）传播模型结合，使用多层感知机对慢度场进行连续函数建模，提出BentRay-NeRF方法。该方法在伪影抑制、图像重建稳定性方面显著优于传统的高斯-牛顿法。在全波反演（Full Waveform Inversion, FWI）USCT中，为应对重建问题病态性和周期跳跃问题，我们提出INR-FWI方法，同样采用多层感知机将声速场建模为连续函数，引入隐式正则化约束保证解空间的平滑性，在无监督框架下直接利用实测超声波形信号进行声速图像重建，避免传统监督方法对大规模训练数据的依赖。在数值模拟实验和人活体乳房数据中，INR-FWI相较于传统的共轭梯度FWI方法展现出更强的鲁棒性和更好的成像质量。</p>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/chenkang.png" alt="陈康 副教授" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>陈康</h3>
+                            <p>陈康，浙江师范大学特聘副教授，数理医学院智能传感与数字医疗装备、超声人工智能与超声机器人团队核心。日本东京大学硕博，曾获JSPS（日本学术振兴会）博士特別研究员，主要研究方向为医学诊断与治疗超声。主持日本JSPS博士特別研究员课题1项，参与JSPS科学研究项目2项。在APL、IEEE TBME、IEEE UFFC等领域内高水平期刊上发表SCI学术论文16余篇，授权美国、日本专利各1项，获得日本国内学术奖项4次，担任日本声学学会、精密工程学会会员。</p>
+                            <p>报告题目：可穿戴超声成像及治疗</p>
+                            <p>报告摘要：本报告介绍可穿戴超声领域涉及的前沿超声成像方法以及团队在其中的研究工作。可穿戴超声成像可实现目标器官/部位的长期实时监测，提供了传统硬质探头不具备的功能，本报告介绍可穿戴超声成像已经取得的一些进展，包括曲率自适应成像、多普勒成像、光声成像、弹性成像，以及本团队的研究进展，主要包括心脏贴片超声以及基于深度学习的曲率图像自纠正方法。</p>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/Ruiter.png" alt="Ruiter " class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>Nicole V Ruiter</h3>
+                            <p>Dr. Nicole V. Ruiter is a senior scientist at the Institute for Data Processing and Electronics (IPE) at the Karlsruhe Institute of Technology (KIT). She holds a degree in Medical Informatics from the University of Heidelberg and a Ph.D. in Informatics from the University of Mannheim. Her research focuses on 3D ultrasound computed tomography (USCT), medical image reconstruction, and biomechanical modeling.
+She leads the development of the world’s first clinically applicable fully 3D USCT system for breast imaging, which is currently being evaluated in international clinical studies. Dr. Ruiter has authored over 100 scientific publications. She is also the inventor or co-inventor of several international patents in the field of ultrasound tomography. Dr. Ruiter is a regular speaker at international conferences and serves on scientific and technical committees in the fields of medical imaging, ultrasound technology, and biomedical engineering. Her work has been supported by national and international funding bodies, including the European Union, German Research Foundation (DFG), and industry partners.</p>>
+                            <p>报告题目：3D Ultrasound Tomography at KIT: Current status</p>
+                            <p>报告摘要：The Karlsruhe Institute of Technology (KIT) is developing 3D Ultrasound Computed Tomography (3D USCT) for breast imaging. Unlike 2D USCT systems, 3D USCT enables fully volumetric, high-resolution imaging with nearly isotropic spatial resolution. This is achieved through a hemispherical arrangement of thousands of transducers that simultaneously capture reflection, speed of sound, and attenuation data.
+The current prototype, 3D USCT III, integrates custom transducer arrays, high-throughput analog/digital electronics, and GPU-accelerated reconstruction algorithms. It is the first true 3D USCT and was recently undergoing clinical validation at Vall d’Hebron University Hospital in Barcelona.  By offering non-ionizing, reproducible, and patient-friendly imaging, 3D USCT has the potential to complement or even replace mammography and MRI in specific clinical scenarios, especially in early breast cancer detection.</p>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/dingmingyue.png" alt="丁 教授" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>丁明跃</h3>
+                            <p>华中科技大学生命科学与技术学院二级教授、博士生导师，华中科技大学高端生物医学成像设施总工艺师。丁明跃教授是德国洪堡基金获得者，教育部跨世纪优秀人才，华中科技大学教学名师，生物医学工程国家级一流本科专业（双万计划）建设点负责人。1982年在北京航空航天大学电子工程系遥控遥测专业毕业，获工学学士学位。1985年毕业于电子科技大学无线电工程系通信与电子系统专业，获工学硕士学位；1988年毕业于华中科技大学电子与信息工程系通信与电子系统专业，获工学博士学位。1991年9月-1993年7月德国不伦瑞克工业大学机器人研究所博士后，1993年12月起华中科技大学图像识别与人工智能研究所教授，1996年6月起模式识别与智能系统专业博士生导师。2000年11月起加拿大西安大略大学罗伯兹研究所研究员。2005年3月回国。2005年4月起任“图像信息处理与智能控制”教育部重点实验室副主任，2005-2008年6月起华中科技大学特聘教授。2006年1月-2012年4月任华中科技大学生物医学工程系主任，教授，生物医学工程专业博士生导师。2012年5月-2024年5月任华中科技大学生命科学与技术学院院长助理、生物医学工程系主任。IEEE高级会员，SPIE会员，中国电子学会、中国机械工程学会、中国生物医学工程学会高级会员，中国生物医学工程学会前理事，中国医疗器械技术创新联盟专家委员会委员，湖北省生物医学工程学会副会长，中国超声工程学会仪器工程专业委员会副主任委员，中国电子学会生命电子学分会常委委员。中国电子学会生命电子学分会常务委员，中国机械工程学会再制造分会委员，中国抗癌协会纳米肿瘤学委员会委员。中国医学装备协会超声装备技术分会委员，质量与标准专业委员会常务委员，大数据与人工智能专业委员会常务委员。主要从事医学图像处理、医学超声成像、手术导航等</p>
+                            <p>报告题目：乳腺超声断层成像关键技术与临床试验</p>
+                            <p>报告摘要：超声断层成像是近年来发展起来的一项革命性技术，然而，在应用于乳腺早期诊断过程中仍面临小乳腺、成像质量差等难题，为解决上述难题，我们先后提出了固体耦合剂塑形、基于稀疏采样的快速扫描方法等关键技术，并在GCP临床试验中得到了应用与验证。通过在武汉同济医院、湖北省肿瘤医院所进行的440例多中心临床试验，其乳腺癌的灵敏度、特异度均超过90%，并于2025年9月取得了国内首个超声断层成像系统医疗器械产品注册证。</p>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/zhangdi.png" alt="张 教授" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>张迪</h3>
+                            <p>中国科学院声学研究所副研究员，主要研究领域为医学超声成像、超声材料和测量方法、医学设备标准化和质量检测方向。目前任IEC/TC87超声波技术委员会注册专家、中国计量测试学会声学计量分会委员。
+研制开发改进了B超高低频体模、切片厚度体模、多普勒体模与仿血流控制系统、超声骨密度仪用定量体模、弹性成像体模、穿刺体模、超声CT成像体模等，并均已实现产业化和及推广应用。
+先后主持完成国家自然科学基金项目、声学所“青年英才”项目、中科院仪器设备功能开发项目等多项。先后发表学术论文二十余篇，已授权发明专利12项，合作编写专著2部：《医用冲击波的基础与临床》、《生物医学工程学（第二版）》。参与全国声学标准化技术委员会超水声分会和全国医用电器标准化技术委员会医用超声分会的标准审定工作。作为主要起草人，已制修订医疗器械行业标准4项，团体标准2项：T/CSBME 060-2022《超声计算机断层成像诊断设备》、T/SASC 03001-2025《光声成像诊断设备的技术要求》。负责IEC/TC87 WG7超声手术与治疗设备工作组及WG9脉冲回波诊断设备工作组的标准制修订工作。</p>
+                            <p>报告题目：超声CT设备成像质量检验及标准化</p>
+                            <p>报告摘要：超声计算机断层成像设备(USCT)以其特有的层析成像、高分辨力、多种成像方式和模式灵活组合等优点，在乳腺疾病的早期筛查和诊断方面呈现显著优势，具有广泛的应用前景。针对USCT这类特殊的超声成像医疗器械新产品，其成像质量保证检测方式具有特殊性。因此，对于基于环形阵列的超声CT设备，其成像模式包括反射回波模式、透射声速成像、透射声衰减成像等，我们设计了其专用的反射成像分辨力体模、成像均匀性体模、透射声速体模、透射衰减体模等。USCT成像相对于传统超声的优势之一是其影像具有标准断层切面，与X-CT及MRI具有相似性，因此其影像标准化是大势所趋，其目的是推动各设备的成像质量可比性，以及推动临床图像的实现互认。我们基于影像质量检验的工作起草发布了一项团体标准，推进该设备在声学成像性能技术要求方面的标准化进程。</p>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/sunhe.png" alt="孙 教授" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>孙赫</h3>
+                            <p>北京大学未来技术学院、国家生物医学成像科学中心助理教授、研究员、博士生导师。本科和博士分别毕业于北京大学和美国普林斯顿大学，并获Amazon AI4Science Fellowship资助在美国加州理工大学从事博士后研究。主要研究方向为人工智能和计算成像。其实验室致力于通过对成像系统物理模块和计算模块的协同设计，突破极端尺度观测极限，研发新一代科学成像仪器。相关成果已应用于事件视界望远镜黑洞成像和罗曼望远镜系外行星成像等多个国际大型科学成像任务，并助力超声断层仪、超分辨显微镜等高端生物医学成像装备研发。主持国家自然科学基金委海外优青、面上、原创探索，及科技部重点研发课题等项目。</p>
+                            <p>报告题目：基于神经物理仿真的生物医学反散射成像</p>
+                            <p>报告摘要：深层生物组织的高分辨率成像长期受到强散射与非线性传播的计算瓶颈制约。神经PDE求解器凭借其高效、稳定地逼近复杂波动PDE，有望成为反散射影像重建的有力工具。然而，受限于生物医学数据匮乏及现有神经算子网络泛化能力不足，其成像效果仍不令人满意。
+本报告将介绍一种新型的基于神经物理仿真的反散射求解框架，并报告其在全波超声断层成像上的实验结果。该方法融合了传统PDE物理建模的高精度和神经网络的计算效率和稳定性，可以在十分钟左右实现媲美磁共振（约1 mm）分辨率的人体组织力学参数的三维超声断层影像重建，为运动损伤和肿瘤等疾病的临床诊断提供了全新定量评估方案。该框架还可推广至类器官与胚胎等厚样本的光学衍射断层成像，为细胞生物学研究开辟新路径。</p>
+                        </div>
+                    </div>
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/qiuwu.png" alt="邱武 教授" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>邱武</h3>
+                            <p>华中科技大学生命科学与技术学院、生物医学工程系教授，国家高层次青年人才、湖北省政府特殊津贴专家。曾任加拿大卡尔加里大学放射学系、临床神经医学系研究员和助理教授；加拿大Western University，Robarts Research Institute研究员。主要从事人工智能在医学影像分析中的应用研究，包括急性期脑卒中的影像学诊断，三维超声断层成像（UCT）等。在IEEE Trans. Medical Imaging， Medical Image Analysis，Radiology，Stroke，MICCAI等国际顶级期刊和会议上发表论文逾100篇。</p>
+                            <p>报告题目：AI assisted Full Wave Inversion for Sound of Speed Reconstruction of USCT</p>
+                            <p>报告摘要：Ultrasound Computed Tomography (USCT) has emerged as a cutting-edge imaging modality, offering quantitative acoustic parameter maps to enhance disease diagnosis. Full-waveform Inversion (FWI), a mainstream reconstruction method, enables high-resolution imaging of the speed of sound (SOS) from USCT measurements. However, its strong sensitivity to the initial model and the anatomical distortions caused by cycle-skipping artifacts significantly hinder its application in complex clinical scenarios. In this talk, two AI assisted SOS reconstruction methods, e.g, an untrained neural network method and an implicit neural representation method, will be introduced. Experiments on numerical phantom, breast-mimicking phantom, and in vivo data will be demonstrated.</p>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/liuxiaodong.png" alt="刘晓东 研究员" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>刘晓东</h3>
+                            <p>刘晓东研究员，2004年本科毕业于北京师范大学，2010年博士毕业于中国科学院数学与系统科学研究院，之后留院工作，2011年至2013年在德国卡尔斯鲁厄理工学院做洪堡学者，刘晓东的研究方向是偏微分方程反问题，主要工作集中在基于波散射的反问题数学理论和算法设计。基于这些工作，刘晓东先后入选中科院数学院陈景润未来之星计划，浪潮优秀青年学术奖，中科院青年创新促进会和国家高层次青年人才计划。</p>
+                            
+                            <p>报告题目：A modified Newton method for cracks from the far field patterns with a fixed incident direction</p>
+                            <p>报告摘要：We consider the inverse cracks scattering problems from the far field patterns with a fixed incident direction. We firstly show that the sound-soft cracks can be uniquely determined by the multi-frequency far field patterns with a fixed incident direction. The proof is based on a low frequency asymptotic analysis of the scattered field. One important feature of the uniqueness result is that the background can even be an unknown inhomogeneous medium.A modified Newton method is then proposed for the numerical reconstruction of the shapes and locations of the cracks. Compared to the classical Newton method, the modified Newton method relaxes the dependence of a good initial guess and can be applied for multiple cracks. Numerical examples in two dimensions are presented to demonstrate the feasibility and effectiveness of the modified Newton method. In particular, the quality of the reconstructions can be greatly improved if we use the measurements properly with two frequencies or two incident directions.</p>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/duanyuping.png" alt="段玉评 教授" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>段玉评 </h3>
+                            <p>段玉萍，2012年在新加坡南洋理工大学取得计算数学博士学位，2012年-2015年在新加坡科技研究资讯通信研究院担任研究科学家。2016年任天津大学应用数学中心教授，博士生导师，2023年加入北京师范大学数学科学学院。主要研究方向包括变分图像处理方法和模型驱动的深度学习方法，已在IEEE TPAMI、TIP、TMI、IP、JSC等期刊和CVPR、MICCAI等会议发表论文70余篇，授权国际/国内专利5项。先后主持国家青年千人计划、国家自然科学基金面上和青年、天津市重大科技专项等科研项目。</p>
+                            <p>报告题目：Starter-Iterator inspired Neural Operator for Solving Forward and Inverse Problems</p>
+                            <p>报告摘要：Operator learning is an interdisciplinary field that combines machine learning with scientific computing to construct efficient mappings between input and output function spaces, thereby reducing the computational complexity of solving high-dimensional partial differential equations. We introduce a novel neural operator framework, the Starter-Iterator inspired Neural Operator (SINO), which reimagines the initialization strategies and iteration formats of traditional methods using neural networks. This leads to a new paradigm for spectral-spatiotemporal collaborative modeling: frequency domain learning captures globally stable low-frequency features, while time domain learning refines local solution residuals, overcoming the limitations of traditional single-domain approaches. Extensive experiments on dynamic systems, including the Navier-Stokes and acoustic wave equations, demonstrate that SINO delivers exceptional numerical accuracy, generalization capability, and robustness.</p>
+                        </div>
+                    </div>
+
+                    <div class="speaker">
+                        <div class="speaker-img-container">
+                            <img src="image/liyubing.png" alt="liyubing 教授" class="speaker-img" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <h3>李玉冰 </h3>
+                            <p>李玉冰，中国科学院声学研究所研究员，2023年中国科学院人才计划择优入选者。主要研究方向为超声高分辨率成像与应用研究，聚焦医用声学中的精准诊断与治疗问题。2011年同济大学本科毕业，2014年中国科学技术大学和法国巴黎第七大学硕士毕业，2018年获法国巴黎文理研究大学（Univ. PSL）-巴黎高等矿业学院（MINES ParisTech）博士学位。2018-2019年于法国格勒诺布尔大学进行博士后研究，2019-2021年于沙特阿美北京国际研发中心担任高级研发科学家，开展了实用性的能源探测、工业检测和医用超声的成像算法研究。目前发表高水平SCI和EI论文共20余篇，授权美国发明专利2项、中国发明专利4项，参与法国科研署（ANR）项目1项，主持国家重点研发计划课题和国家面上自然科学基金各1项。于2023年国际超声大会（ICU）组织医学全波形反演、超声机器学习与统计方法、超声设备与信号处理3项专题，于2025年ICU组织医学全波形反演1项专题。</p>
+                            <p>报告题目：高分辨率全波超声断层成像方法与应用研究</p>
+                            <p>报告摘要:全波形反演是基于最优化理论的高分辨率声参数模型重建和成像方法。传统的B型超声成像方法，利用多组自激自收的脉冲回波信号，依赖匀速和射线假设重建目标体的结构分布灰阶图像，分辨率有限，难以识别尺寸较小的病灶，且在有骨骼等声速度差异较大的硬组织存在的情况下成像效果不佳。本研究采用包围式的环形阵列全矩阵观测方法，充分采集反射波、散射波、折射波、透射波等信息，利用基于多参数波动方程（声速、声阻抗、衰减等）的全波形反演方法重构可以解释观测信号的最优数值参数模型，其结果具备毫米甚至亚毫米级的空间分辨率。通过数值仿真、声学体模、离体组织、在体实验测试，发现全波形反演方法均成功重建了高分辨率的声学参数模型，其结果与磁共振具有良好一致性，充分验证了该方法的稳健性和有效性。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="accommodation" class="section">
+                <h2>食宿安排</h2>
+                <p>会议期间组委会为参会人员提供推荐酒店，费用自理。</p>
+                
+                <div class="important-dates">
+                    <h3>推荐酒店：金华蝶来元素酒店</h3>
+                    <div class="date-item">
+                        <span class="date-label">地址:</span>
+                        <span>浙江省金华市婺城区玉泉东路29号</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">电话:</span>
+                        <span>0579-82608800（总台）</span>
+                    </div>
+                </div>
+                
+            </section>
+
+            <section id="contact" class="section">
+                <h2>联系我们</h2>
+                <p>如有任何问题，请随时联系会议组委会：</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>刘娜</h3>
+                        <p>电话: 18774964073</p>
+                        <p>邮箱: NanaLiu2024@zjnu.edu.cn</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>娄翠娟</h3>
+                        <p>电话: 18623718157</p>
+                        <p>邮箱: loucuijuan2024@zjnu.edu.cn</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>蔡超</h3>
+                        <p>电话: 15926340843</p>
+                        <p>邮箱: chriscai@hust.edu.cn</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>尹振</h3>
+                        <p>电话: 18166125362</p>
+                        <p>邮箱: zhen.yin@zjnu.edu.cn</p>
+                    </div>
+                </div>
+                
+                <h3>会议地址</h3>
+                <p>浙江师范大学 (中国浙江省金华市迎宾路688号，邮编321004)</p>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 首届超声断层成像会议组织委员会 | 浙江师范大学数理医学院</p>
+        </div>
+    </footer>
+    <script>
+        // 导航激活状态 IntersectionObserver
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        const sections = [...document.querySelectorAll('section[id]')];
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    navLinks.forEach(l=>l.classList.remove('active'));
+                    const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+                    active && active.classList.add('active');
+                }
+            });
+        }, {root:null,threshold:.25});
+        sections.forEach(sec=>observer.observe(sec));
+        // 演讲者长摘要折叠
+        document.querySelectorAll('.speaker').forEach(card=>{
+            const paras = card.querySelectorAll('.speaker-info p');
+            if(paras.length>3){
+                for(let i=2;i<paras.length;i++){
+                    paras[i].classList.add('collapsible-body');
+                }
+                const last = paras[paras.length-1];
+                last.classList.add('collapsed');
+                const btn = document.createElement('button');
+                btn.className='toggle-btn';
+                btn.innerHTML='展开全文';
+                btn.addEventListener('click',()=>{
+                    const collapsed = card.querySelectorAll('.collapsed');
+                    if(collapsed.length){
+                        collapsed.forEach(el=>{el.classList.remove('collapsed');});
+                        btn.innerHTML='收起内容';
+                    } else {
+                        for(let i=2;i<paras.length;i++){paras[i].classList.add('collapsed');}
+                        btn.innerHTML='展开全文';
+                    }
+                });
+                card.querySelector('.speaker-info').appendChild(btn);
+            }
+        });
+    </script>
+</body>
+</html>
